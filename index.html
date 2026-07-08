@@ -1,265 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Shaomeng Sun | Portfolio</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#f4f6f8;
-    color:#333;
+
+    font-family:'Inter',sans-serif;
+
+    background:linear-gradient(135deg,#eef4ff,#f9fbff);
+
+    color:#222;
+
 }
 
-header{
-    background:#1f2937;
-    color:white;
-    padding:50px 20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:2.8rem;
-}
-
-header p{
-    margin-top:10px;
-    color:#d1d5db;
-}
+/* ---------- Main Layout ---------- */
 
 .container{
-    width:90%;
-    max-width:1000px;
-    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 2fr;
+
+    min-height:100vh;
+
 }
 
-.button-group{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
+/* ---------- LEFT PANEL ---------- */
 
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:15px 28px;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-    transition:0.25s;
-}
+.left{
 
-button:hover{
-    background:#1d4ed8;
-    transform:translateY(-3px);
-}
-
-.content{
     background:white;
-    border-radius:12px;
-    padding:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    min-height:300px;
-    animation:fade 0.3s ease;
+
+    padding:40px;
+
+    border-right:1px solid #e6e6e6;
+
 }
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.profile{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:flex-start;
+
 }
+
+.profile img{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:20px;
+
+    object-fit:cover;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+}
+
+.contact{
+
+    flex:1;
+
+}
+
+.contact h1{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.job-title{
+
+    margin-top:15px;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+    line-height:1.6;
+
+}
+
+.info{
+
+    margin-top:18px;
+
+    line-height:1.8;
+
+    color:#555;
+
+    font-size:15px;
+
+}
+
+.about{
+
+    margin-top:45px;
+
+}
+
+.about h2{
+
+    margin-bottom:15px;
+
+    color:#2563eb;
+
+}
+
+.about p{
+
+    line-height:1.9;
+
+    color:#444;
+
+}
+
+/* ---------- RIGHT PANEL ---------- */
+
+.right{
+
+    padding:40px;
+
+}
+
+/* ---------- Navigation ---------- */
+
+.tabs{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+.tab{
+
+    border:none;
+
+    background:white;
+
+    padding:15px 28px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.tab:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.tab.active{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* ---------- Content ---------- */
 
 .section{
+
     display:none;
+
+    animation:fade .35s;
+
 }
 
 .section.active{
+
     display:block;
+
 }
 
-h2{
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.card h3{
+
+    margin-bottom:12px;
+
     color:#2563eb;
-    margin-bottom:15px;
+
 }
 
-ul{
-    margin-left:20px;
-    line-height:1.8;
+.card p{
+
+    color:#666;
+
+    line-height:1.7;
+
 }
 
-footer{
-    text-align:center;
-    margin:60px 0;
-    color:#888;
+@media(max-width:900px){
+
+.container{
+
+grid-template-columns:1fr;
+
 }
+
+.left{
+
+border-right:none;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.profile{
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.tabs{
+
+flex-wrap:wrap;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<header>
-    <h1>Shaomeng Sun</h1>
-    <p>Data Scientist • Game Economy Designer • Product Analytics</p>
-</header>
-
-<section id="featured-projects">
-
-    <h2>Featured Projects</h2>
-
-    <div class="project-grid">
-
-        <a href="projects/player-dashboard.html" class="project-card">
-            <img src="images/dashboard.jpg" alt="Player Dashboard">
-            <h3>Player Behavior Dashboard</h3>
-            <p>
-                SQL • Python • Product Analytics
-            </p>
-            <span>View Project →</span>
-        </a>
-
-        <a href="projects/game-economy.html" class="project-card">
-            <img src="images/economy.jpg" alt="Game Economy">
-            <h3>Game Economy Simulator</h3>
-            <p>
-                Python • Simulation • Balancing
-            </p>
-            <span>View Project →</span>
-        </a>
-
-    </div>
-
-</section>    
-
 <div class="container">
 
-    <div class="button-group">
+<!-- LEFT -->
 
-        <button onclick="showSection('education')">
-            🎓 Education
-        </button>
+<div class="left">
 
-        <button onclick="showSection('experience')">
-            💼 Professional Experience
-        </button>
+<div class="profile">
 
-        <button onclick="showSection('projects')">
-            🚀 Projects
-        </button>
+<img src="images/profile.jpg" alt="Profile Picture">
 
-    </div>
+<div class="contact">
 
-    <div class="content">
+<h1>Shaomeng Sun</h1>
 
-        <div id="education" class="section active">
+<div class="job-title">
 
-            <h2>Education</h2>
-
-            <ul>
-                <li><strong>Master's Degree</strong><br>
-                Stockholm School of Economics</li>
-
-                <li><strong>Bachelor's Degree</strong><br>
-                China Agricultural University</li>
-
-                <li>Specialized in Economics, Statistics, and Quantitative Analysis.</li>
-            </ul>
-
-        </div>
-
-        <div id="experience" class="section">
-
-            <h2>Professional Experience</h2>
-
-            <ul>
-                <li>
-                    <strong>Game Economy Designer</strong><br>
-                    ChromaWay
-                </li>
-
-                <li>
-                    Designed game economies using SQL, Python, A/B testing,
-                    forecasting, and behavioral analytics.
-                </li>
-
-                <li>
-                    Built dashboards and predictive models for player retention
-                    and monetization.
-                </li>
-
-                <li>
-                    Collaborated with production, marketing,
-                    and engineering teams.
-                </li>
-
-            </ul>
-
-        </div>
-
-        <div id="projects" class="section">
-
-            <h2>Projects</h2>
-
-            <ul>
-
-                <li>
-                    🎮 Multiplayer Game Economy Simulation
-                </li>
-
-                <li>
-                    📊 Player Behavior Dashboard
-                </li>
-
-                <li>
-                    📈 A/B Testing Analytics
-                </li>
-
-                <li>
-                    🌍 Carbon Tax Economic Modeling
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
+Data Scientist<br>
+Product Analyst<br>
+Game Economy Designer
 
 </div>
 
-<footer>
-    © 2026 Shaomeng Sun
-</footer>
+<div class="info">
+
+📍 Stockholm, Sweden<br>
+
+📧 your@email.com<br>
+
+📱 +46 xxx xxx xxxx<br>
+
+🔗 LinkedIn<br>
+
+💻 GitHub
+
+</div>
+
+</div>
+
+</div>
+
+<div class="about">
+
+<h2>About Me</h2>
+
+<p>
+
+I am a data-driven product professional with experience in game economy
+design, product analytics, experimentation, forecasting, and behavioral
+analysis. My background combines economics, statistics, and software tools
+to transform data into actionable product decisions. I enjoy solving
+complex business problems using SQL, Python, causal inference, and
+predictive modeling.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right">
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="showSection('projects',this)">
+Projects
+</button>
+
+<button class="tab"
+onclick="showSection('experience',this)">
+Professional Experience
+</button>
+
+<button class="tab"
+onclick="showSection('education',this)">
+Education
+</button>
+
+</div>
+
+<!-- PROJECTS -->
+
+<div id="projects" class="section active">
+
+<div class="grid">
+
+<div class="card">
+
+<h3>📊 Player Analytics Dashboard</h3>
+
+<p>
+
+Interactive dashboard for player retention,
+engagement, and monetization.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🎮 Game Economy Simulator</h3>
+
+<p>
+
+Simulated marketplace balancing and
+economic forecasting.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>📈 A/B Testing Framework</h3>
+
+<p>
+
+Experimentation platform for
+feature optimization.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXPERIENCE -->
+
+<div id="experience" class="section">
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Game Economy Designer</h3>
+
+<p>
+
+ChromaWay
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Marketing Analyst</h3>
+
+<p>
+
+Antler
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Business Development</h3>
+
+<p>
+
+Norrsken
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EDUCATION -->
+
+<div id="education" class="section">
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Master's Degree</h3>
+
+<p>
+
+Stockholm School of Economics
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Bachelor's Degree</h3>
+
+<p>
+
+Economics & Mathematics
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Publication</h3>
+
+<p>
+
+IEEE Conference Paper
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
-function showSection(sectionId){
+function showSection(id,button){
 
-    const sections=document.querySelectorAll(".section");
+document.querySelectorAll(".section").forEach(section=>{
 
-    sections.forEach(section=>{
-        section.classList.remove("active");
-    });
+section.classList.remove("active");
 
-    document.getElementById(sectionId).classList.add("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".tab").forEach(tab=>{
+
+tab.classList.remove("active");
+
+});
+
+button.classList.add("active");
 
 }
 
 </script>
 
 </body>
+
 </html>
