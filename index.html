@@ -315,6 +315,44 @@ flex-wrap:wrap;
 
 }
 
+.toggle-btn{
+
+    width:100%;
+
+    margin-bottom:25px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.toggle-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+    
 </style>
 
 </head>
@@ -327,11 +365,37 @@ flex-wrap:wrap;
 
 <div class="left">
 
-<div class="profile">
+<button id="toggleSidebar" class="toggle-btn">
 
-<img src="images/profile.jpg" alt="Profile Picture">
+    Hide Profile
+
+</button>
+
+<div id="profileContent">
+
+    <div class="profile">
+
+        <img src="images/profile.jpg" alt="Profile Picture">
+
+    <div>
+
+<div>
 
 <div class="contact">
+
+...
+
+</div>
+
+</div>
+
+<div class="about">
+
+...
+
+</div>
+
+</div>
 
 <h1>Shaomeng Sun</h1>
 
@@ -570,6 +634,34 @@ button.classList.add("active");
 
 }
 
+const toggleBtn = document.getElementById("toggleSidebar");
+
+const profileContent = document.getElementById("profileContent");
+
+let hidden = false;
+
+toggleBtn.onclick = function(){
+
+    hidden = !hidden;
+
+    if(hidden){
+
+        profileContent.classList.add("hidden");
+
+        toggleBtn.innerText = "Show Profile";
+
+    }
+
+    else{
+
+        profileContent.classList.remove("hidden");
+
+        toggleBtn.innerText = "Hide Profile";
+
+    }
+
+}
+    
 </script>
 
 </body>
