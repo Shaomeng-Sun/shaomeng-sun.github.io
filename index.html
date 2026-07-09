@@ -47,6 +47,8 @@ body{
 
 .left{
 
+    position:relative;
+
     background:white;
 
     padding:40px;
@@ -315,32 +317,46 @@ flex-wrap:wrap;
 
 }
 
-.toggle-btn{
+.collapse-btn{
 
-    width:100%;
+    position:absolute;
 
-    margin-bottom:25px;
+    top:20px;
 
-    padding:12px;
+    right:20px;
+
+    width:36px;
+
+    height:36px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:50%;
+
+    background:#f3f4f6;
+
+    color:#555;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+.collapse-btn:hover{
 
     background:#2563eb;
 
     color:white;
 
-    font-size:15px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
+    transform:scale(1.1);
 
 }
-
+    
 .toggle-btn:hover{
 
     background:#1d4ed8;
@@ -367,7 +383,7 @@ flex-wrap:wrap;
 
 <button id="toggleSidebar" class="toggle-btn">
 
-    Hide Profile
+    ◀
 
 </button>
 
@@ -638,17 +654,17 @@ const toggleBtn = document.getElementById("toggleSidebar");
 
 const profileContent = document.getElementById("profileContent");
 
-let hidden = false;
+let collapsed = false;
 
 toggleBtn.onclick = function(){
 
-    hidden = !hidden;
+    collapsed = !collapsed;
 
-    if(hidden){
+    if(collapsed){
 
         profileContent.classList.add("hidden");
 
-        toggleBtn.innerText = "Show Profile";
+        toggleBtn.innerHTML = "▶";
 
     }
 
@@ -656,7 +672,7 @@ toggleBtn.onclick = function(){
 
         profileContent.classList.remove("hidden");
 
-        toggleBtn.innerText = "Hide Profile";
+        toggleBtn.innerHTML = "◀";
 
     }
 
