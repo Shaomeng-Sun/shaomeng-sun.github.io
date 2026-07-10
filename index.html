@@ -4,262 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shaomeng Sun | Portfolio</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#f4f6f8;
-    color:#333;
-}
-
-header{
-    background:#1f2937;
-    color:white;
-    padding:50px 20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:2.8rem;
-}
-
-header p{
-    margin-top:10px;
-    color:#d1d5db;
-}
-
-.container{
-    width:90%;
-    max-width:1000px;
-    margin:40px auto;
-}
-
-.button-group{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
-
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:15px 28px;
-    border-radius:10px;
-    font-size:18px;
-    cursor:pointer;
-    transition:0.25s;
-}
-
-button:hover{
-    background:#1d4ed8;
-    transform:translateY(-3px);
-}
-
-.content{
-    background:white;
-    border-radius:12px;
-    padding:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    min-height:300px;
-    animation:fade 0.3s ease;
-}
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.section{
-    display:none;
-}
-
-.section.active{
-    display:block;
-}
-
-h2{
-    color:#2563eb;
-    margin-bottom:15px;
-}
-
-ul{
-    margin-left:20px;
-    line-height:1.8;
-}
-
-footer{
-    text-align:center;
-    margin:60px 0;
-    color:#888;
-}
-</style>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-<header>
-    <h1>Shaomeng Sun</h1>
-    <p>Data Scientist • Game Economy Designer • Product Analytics</p>
-</header>
-
-<section id="featured-projects">
-
-    <h2>Featured Projects</h2>
-
-    <div class="project-grid">
-
-        <a href="projects/player-dashboard.html" class="project-card">
-            <img src="images/dashboard.jpg" alt="Player Dashboard">
-            <h3>Player Behavior Dashboard</h3>
-            <p>
-                SQL • Python • Product Analytics
-            </p>
-            <span>View Project →</span>
-        </a>
-
-        <a href="projects/game-economy.html" class="project-card">
-            <img src="images/economy.jpg" alt="Game Economy">
-            <h3>Game Economy Simulator</h3>
-            <p>
-                Python • Simulation • Balancing
-            </p>
-            <span>View Project →</span>
-        </a>
-
-    </div>
-
-</section>    
-
 <div class="container">
+<aside id="sidebar" class="sidebar">
+<button id="toggle" class="toggle">◀</button>
 
-    <div class="button-group">
-
-        <button onclick="showSection('education')">
-            🎓 Education
-        </button>
-
-        <button onclick="showSection('experience')">
-            💼 Professional Experience
-        </button>
-
-        <button onclick="showSection('projects')">
-            🚀 Projects
-        </button>
-
-    </div>
-
-    <div class="content">
-
-        <div id="education" class="section active">
-
-            <h2>Education</h2>
-
-            <ul>
-                <li><strong>Master's Degree</strong><br>
-                Stockholm School of Economics</li>
-
-                <li><strong>Bachelor's Degree</strong><br>
-                China Agricultural University</li>
-
-                <li>Specialized in Economics, Statistics, and Quantitative Analysis.</li>
-            </ul>
-
-        </div>
-
-        <div id="experience" class="section">
-
-            <h2>Professional Experience</h2>
-
-            <ul>
-                <li>
-                    <strong>Game Economy Designer</strong><br>
-                    ChromaWay
-                </li>
-
-                <li>
-                    Designed game economies using SQL, Python, A/B testing,
-                    forecasting, and behavioral analytics.
-                </li>
-
-                <li>
-                    Built dashboards and predictive models for player retention
-                    and monetization.
-                </li>
-
-                <li>
-                    Collaborated with production, marketing,
-                    and engineering teams.
-                </li>
-
-            </ul>
-
-        </div>
-
-        <div id="projects" class="section">
-
-            <h2>Projects</h2>
-
-            <ul>
-
-                <li>
-                    🎮 Multiplayer Game Economy Simulation
-                </li>
-
-                <li>
-                    📊 Player Behavior Dashboard
-                </li>
-
-                <li>
-                    📈 A/B Testing Analytics
-                </li>
-
-                <li>
-                    🌍 Carbon Tax Economic Modeling
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
+<div class="top">
+<img class="avatar" src="images/profile.jpg" alt="Profile">
+<div>
+<h1>Shaomeng Sun</h1>
+<div class="roles">
+<div>Data Scientist</div>
+<div>Product Analyst</div>
+<div>Game Economy Designer</div>
+</div>
+<div class="contact">
+<p>📍 Stockholm, Sweden</p>
+<p>📧 your@email.com</p>
+<p>💼 LinkedIn</p>
+<p>💻 GitHub</p>
+</div>
+</div>
 </div>
 
-<footer>
-    © 2026 Shaomeng Sun
-</footer>
+<div id="about" class="about">
+<h2>About Me</h2>
+<p>I combine economics, analytics, and product thinking to solve business and game design problems through data.</p>
+</div>
+</aside>
 
-<script>
+<main class="content">
+<div class="tabs">
+<button class="tab active" data-tab="projects">Projects</button>
+<button class="tab" data-tab="experience">Professional Experience</button>
+<button class="tab" data-tab="education">Education</button>
+</div>
 
-function showSection(sectionId){
+<section id="projects" class="panel active">
+<div class="cards">
+<a class="card" href="projects/dashboard.html"><h3>📊 Player Analytics Dashboard</h3><p>SQL • Python • KPIs</p></a>
+<a class="card" href="projects/economy.html"><h3>🎮 Game Economy Simulator</h3><p>Simulation & Balancing</p></a>
+<a class="card" href="projects/abtesting.html"><h3>📈 A/B Testing</h3><p>Experimentation</p></a>
+</div>
+</section>
 
-    const sections=document.querySelectorAll(".section");
+<section id="experience" class="panel">
+<div class="cards">
+<div class="card"><h3>ChromaWay</h3><p>Game Economy Designer</p></div>
+<div class="card"><h3>Antler</h3><p>Marketing Analyst</p></div>
+<div class="card"><h3>Norrsken</h3><p>Business Development</p></div>
+</div>
+</section>
 
-    sections.forEach(section=>{
-        section.classList.remove("active");
-    });
+<section id="education" class="panel">
+<div class="cards">
+<div class="card"><h3>Stockholm School of Economics</h3><p>Master's Degree</p></div>
+<div class="card"><h3>China Agricultural University</h3><p>Bachelor's Degree</p></div>
+<div class="card"><h3>IEEE Publication</h3><p>Research & Analytics</p></div>
+</div>
+</section>
 
-    document.getElementById(sectionId).classList.add("active");
-
-}
-
-</script>
-
+</main>
+</div>
+<script src="js/script.js"></script>
 </body>
 </html>
