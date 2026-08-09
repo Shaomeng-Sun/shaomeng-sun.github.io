@@ -1,76 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shaomeng Sun | Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Shaomeng Sun | Portfolio
+    </title>
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
+
+
 <body>
+
+
 <div class="container">
-<aside id="sidebar" class="sidebar">
-<button id="toggle" class="toggle">◀</button>
 
-<div class="top">
-<img class="avatar" src="images/profile.jpg" alt="Profile">
-<div>
-<h1>Shaomeng Sun</h1>
-<div class="roles">
-<div>Data Scientist</div>
-<div>Product Analyst</div>
-<div>Game Economy Designer</div>
-</div>
-<div class="contact">
-<p>📍 Stockholm, Sweden</p>
-<p>📧 your@email.com</p>
-<p>💼 LinkedIn</p>
-<p>💻 GitHub</p>
-</div>
-</div>
+
+    <!-- =========================
+         Sidebar
+    ========================== -->
+
+    <aside 
+        id="sidebar"
+        class="sidebar">
+
+
+        <button
+            id="toggle"
+            class="toggle"
+            type="button"
+            aria-label="Collapse sidebar">
+
+            ◀
+
+        </button>
+
+
+
+        <!-- Profile -->
+
+        <section class="profile">
+
+
+            <img
+                class="avatar"
+                src="images/profile.jpg"
+                alt="Shaomeng Sun profile picture">
+
+
+            <div class="profile-info">
+
+
+                <h1>
+                    Shaomeng Sun
+                </h1>
+
+
+                <ul class="roles">
+
+                    <li>
+                        Data Scientist
+                    </li>
+
+                    <li>
+                        Product Analyst
+                    </li>
+
+                    <li>
+                        Game Economy Designer
+                    </li>
+
+                </ul>
+
+
+                <!-- Contact -->
+
+                <address class="contact">
+
+
+                    <p>
+                        📍 Stockholm, Sweden
+                    </p>
+
+
+                    <p>
+                        📧 
+                        <a href="mailto:your@email.com">
+                            your@email.com
+                        </a>
+                    </p>
+
+
+                    <p>
+                        💼 
+                        <a href="#">
+                            LinkedIn
+                        </a>
+                    </p>
+
+
+                    <p>
+                        💻 
+                        <a href="#">
+                            GitHub
+                        </a>
+                    </p>
+
+
+                </address>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- About -->
+
+        <section 
+            id="about"
+            class="about">
+
+
+            <h2>
+                About Me
+            </h2>
+
+
+            <p>
+
+                I combine economics, analytics, and product thinking
+                to solve business and game design problems through data.
+
+            </p>
+
+
+        </section>
+
+
+    </aside>
+
+
+
+
+
+    <!-- =========================
+         Main Content
+    ========================== -->
+
+
+    <main class="content">
+
+
+        <!-- Navigation -->
+
+        <nav 
+            class="tabs"
+            aria-label="Portfolio navigation">
+
+
+            <button
+                class="tab active"
+                data-tab="projects"
+                type="button">
+
+                Projects
+
+            </button>
+
+
+
+            <button
+                class="tab"
+                data-tab="experience"
+                type="button">
+
+                Professional Experience
+
+            </button>
+
+
+
+            <button
+                class="tab"
+                data-tab="education"
+                type="button">
+
+                Education
+
+            </button>
+
+
+        </nav>
+
+
+
+
+
+        <!-- =========================
+             Projects
+        ========================== -->
+
+
+        <section
+            id="projects"
+            class="panel active">
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+
+                    <a href="projects/dashboard.html">
+
+
+                        <h3>
+                            📊 Player Analytics Dashboard
+                        </h3>
+
+
+                        <p>
+                            SQL • Python • KPIs • Visualization
+                        </p>
+
+
+                    </a>
+
+
+                </article>
+
+
+
+                <article class="card">
+
+
+                    <a href="projects/economy.html">
+
+
+                        <h3>
+                            🎮 Game Economy Simulator
+                        </h3>
+
+
+                        <p>
+                            Simulation • Balancing • Forecasting
+                        </p>
+
+
+                    </a>
+
+
+                </article>
+
+
+
+                <article class="card">
+
+
+                    <a href="projects/abtesting.html">
+
+
+                        <h3>
+                            📈 A/B Testing Analytics
+                        </h3>
+
+
+                        <p>
+                            Experiment Design • Statistics • Causal Analysis
+                        </p>
+
+
+                    </a>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <!-- =========================
+             Experience
+        ========================== -->
+
+
+        <section
+            id="experience"
+            class="panel">
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <h3>
+                        ChromaWay
+                    </h3>
+
+                    <p>
+                        Game Economy Designer
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <h3>
+                        Antler
+                    </h3>
+
+                    <p>
+                        Marketing Analyst
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <h3>
+                        Norrsken
+                    </h3>
+
+                    <p>
+                        Business Development
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <!-- =========================
+             Education
+        ========================== -->
+
+
+        <section
+            id="education"
+            class="panel">
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <h3>
+                        Stockholm School of Economics
+                    </h3>
+
+                    <p>
+                        Master's Degree
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <h3>
+                        China Agricultural University
+                    </h3>
+
+                    <p>
+                        Bachelor's Degree
+                    </p>
+
+                </article>
+
+
+
+                <article class="card">
+
+                    <h3>
+                        IEEE Publication
+                    </h3>
+
+                    <p>
+                        Research & Analytics
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
 </div>
 
-<div id="about" class="about">
-<h2>About Me</h2>
-<p>I combine economics, analytics, and product thinking to solve business and game design problems through data.</p>
-</div>
-</aside>
 
-<main class="content">
-<div class="tabs">
-<button class="tab active" data-tab="projects">Projects</button>
-<button class="tab" data-tab="experience">Professional Experience</button>
-<button class="tab" data-tab="education">Education</button>
-</div>
 
-<section id="projects" class="panel active">
-<div class="cards">
-<a class="card" href="projects/dashboard.html"><h3>📊 Player Analytics Dashboard</h3><p>SQL • Python • KPIs</p></a>
-<a class="card" href="projects/economy.html"><h3>🎮 Game Economy Simulator</h3><p>Simulation & Balancing</p></a>
-<a class="card" href="projects/abtesting.html"><h3>📈 A/B Testing</h3><p>Experimentation</p></a>
-</div>
-</section>
-
-<section id="experience" class="panel">
-<div class="cards">
-<div class="card"><h3>ChromaWay</h3><p>Game Economy Designer</p></div>
-<div class="card"><h3>Antler</h3><p>Marketing Analyst</p></div>
-<div class="card"><h3>Norrsken</h3><p>Business Development</p></div>
-</div>
-</section>
-
-<section id="education" class="panel">
-<div class="cards">
-<div class="card"><h3>Stockholm School of Economics</h3><p>Master's Degree</p></div>
-<div class="card"><h3>China Agricultural University</h3><p>Bachelor's Degree</p></div>
-<div class="card"><h3>IEEE Publication</h3><p>Research & Analytics</p></div>
-</div>
-</section>
-
-</main>
-</div>
 <script src="js/script.js"></script>
+
+
 </body>
+
 </html>
