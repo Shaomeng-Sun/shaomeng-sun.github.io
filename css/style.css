@@ -194,6 +194,10 @@ body {
 }
 
 
+.sidebar.collapsed .profile {
+    padding-top:45px;
+}
+
 
 /* =========================
    Job Titles
