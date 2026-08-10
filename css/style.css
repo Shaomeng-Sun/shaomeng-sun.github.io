@@ -38,7 +38,7 @@ body {
 
 .container.collapsed {
 
-    grid-template-columns: 90px 1fr;
+    grid-template-columns:190px 1fr;
 
 }
 
@@ -68,7 +68,7 @@ body {
 
 .sidebar.collapsed {
 
-    padding: 20px 10px;
+    padding: 20px 12px;
 
 }
 
@@ -147,12 +147,22 @@ body {
 }
 
 
-.sidebar.collapsed .avatar {
+/* Remove photo */
 
-    display: none;
+.sidebar.collapsed .avatar{
+
+    display:none;
 
 }
 
+
+/* Remove About Me */
+
+.sidebar.collapsed .about{
+
+    display:none;
+
+}
 
 .sidebar.collapsed .top {
 
