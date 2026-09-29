@@ -132,15 +132,16 @@ body {
 ========================= */
 
 .profile {
-    display: grid;
+   display: grid;
+   
+   grid-template-columns: 120px 1fr;
+   
+   gap: 18px;
 
-    grid-template-columns: 120px 1fr;
+   height: 150px;
+   
+   align-items: stretch;
 
-    gap: 18px;
-
-    align-items: stretch;
-
-    width: 100%;
 }
 
 
@@ -148,9 +149,7 @@ body {
 
 .avatar {
     width: 120px;
-    height: 100%;
-
-    min-height: 120px;
+    height: 150px;
 
     object-fit: cover;
 
