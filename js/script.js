@@ -56,34 +56,23 @@ tabs.forEach(tab => {
    Sidebar Collapse
 ========================= */
 
-const sidebar = document.getElementById("sidebar");
-
+const sidebar = document.querySelector(".sidebar");
 const container = document.querySelector(".container");
+const toggle = document.querySelector(".toggle");
 
-const toggleButton = document.getElementById("toggle");
+toggle.addEventListener("click", () => {
 
+    const isCollapsed = sidebar.classList.toggle("collapsed");
 
+    container.classList.toggle("collapsed", isCollapsed);
 
-function toggleSidebar(){
+    toggle.textContent = isCollapsed ? "▶" : "◀";
 
-    const isCollapsed =
-        sidebar.classList.toggle("collapsed");
-
-
-    container.classList.toggle(
-        "collapsed",
+    toggle.setAttribute(
+        "aria-label",
         isCollapsed
+            ? "Expand sidebar"
+            : "Collapse sidebar"
     );
 
-
-    toggleButton.textContent =
-        isCollapsed ? "▶" : "◀";
-
-}
-
-
-
-toggleButton.addEventListener(
-    "click",
-    toggleSidebar
-);
+});
