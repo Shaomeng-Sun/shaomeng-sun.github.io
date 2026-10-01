@@ -1,1 +1,434 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><link rel='stylesheet' href='../css/style.css'><title>A/B Testing Analytics</title></head><body><main class='content'><h1>A/B Testing Analytics</h1><p>Describe experiments, statistical methods and learnings here.</p><p><a href='../index.html'>← Back to Home</a></p></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A/B Testing Analytics | Shaomeng Sun</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="project-page">
+
+        <!-- =========================
+             Header
+        ========================== -->
+
+        <header class="project-header">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <p class="project-category">
+                Experimentation & Product Analytics
+            </p>
+
+            <h1>A/B Testing Analytics</h1>
+
+            <p class="project-summary">
+                Designed and analyzed controlled experiments to evaluate the impact
+                of different reminder strategies on parcel pickup behavior.
+            </p>
+
+            <div class="project-tags">
+                <span>Python</span>
+                <span>SQL</span>
+                <span>A/B Testing</span>
+                <span>Statistics</span>
+                <span>Causal Analysis</span>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             Project Overview
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                This project analyzes an A/B test comparing different customer
+                reminder strategies and their effect on parcel pickup behavior.
+                The analysis focuses on experiment validity, data quality,
+                treatment differences, and actionable recommendations.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Business Question
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Business Question</h2>
+
+            <div class="highlight-box">
+
+                <h3>How can reminder strategies improve pickup speed?</h3>
+
+                <p>
+                    The objective was to determine whether SMS, email, or a
+                    combination of channels could encourage customers to pick up
+                    parcels faster while providing a reliable basis for future
+                    experimentation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Experiment Design
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Experiment Design</h2>
+
+            <p>
+                Customers were assigned to different reminder strategies:
+            </p>
+
+            <div class="experiment-grid">
+
+                <article class="experiment-card">
+                    <h3>SMS Only</h3>
+                    <p>
+                        Customers received SMS reminders according to the
+                        experimental reminder schedule.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>SMS + Email</h3>
+                    <p>
+                        Customers received both SMS and email reminders.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>Default Reminder</h3>
+                    <p>
+                        Customers received the existing reminder strategy.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>Email Only</h3>
+                    <p>
+                        Customers received email reminders without SMS.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>No Reminder</h3>
+                    <p>
+                        Customers received no reminder intervention and served
+                        as a comparison group.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Data & Metrics
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Data & Key Metrics</h2>
+
+            <div class="metrics-grid">
+
+                <article class="metric-card">
+                    <h3>Primary Metric</h3>
+                    <p>
+                        Pickup time after the first reminder.
+                    </p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Operational Metrics</h3>
+                    <p>
+                        Number of reminders sent and time spent in the locker.
+                    </p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Quality Checks</h3>
+                    <p>
+                        Treatment assignment, timestamps, duplicates,
+                        and reminder consistency.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Data Quality
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Data Quality & Validation</h2>
+
+            <p>
+                Before comparing treatment groups, I performed data-quality
+                checks to identify inconsistencies that could bias the
+                experiment analysis.
+            </p>
+
+            <ul class="analysis-list">
+
+                <li>
+                    Checked whether customers were consistently assigned to
+                    a single experimental group.
+                </li>
+
+                <li>
+                    Investigated cases where observed reminder counts did not
+                    match the expected reminder schedule.
+                </li>
+
+                <li>
+                    Identified inconsistent SMS counts across experimental
+                    groups.
+                </li>
+
+                <li>
+                    Checked timestamp relationships between locker visits,
+                    reminders, and parcel pickup.
+                </li>
+
+                <li>
+                    Investigated duplicate orders and conflicting treatment
+                    assignments.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             Methodology
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Analytical Approach</h2>
+
+            <div class="methodology">
+
+                <div>
+                    <span class="step-number">01</span>
+
+                    <h3>Validate the Experiment</h3>
+
+                    <p>
+                        Checked treatment assignment, sample sizes, duplicates,
+                        and data consistency before analyzing outcomes.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">02</span>
+
+                    <h3>Compare Treatment Groups</h3>
+
+                    <p>
+                        Compared pickup-time distributions and pickup
+                        performance across reminder strategies.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">03</span>
+
+                    <h3>Quantify Differences</h3>
+
+                    <p>
+                        Estimated differences between treatment groups using
+                        appropriate statistical comparisons.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">04</span>
+
+                    <h3>Translate Results</h3>
+
+                    <p>
+                        Converted the statistical findings into practical
+                        recommendations for the next experiment.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Results
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Key Results</h2>
+
+            <div class="results-grid">
+
+                <article class="result-card">
+                    <span class="result-label">
+                        Observed Pattern
+                    </span>
+
+                    <h3>
+                        Reminder strategies affected pickup behavior
+                    </h3>
+
+                    <p>
+                        The experimental groups showed meaningful differences
+                        in pickup performance, indicating that reminder design
+                        can influence customer behavior.
+                    </p>
+                </article>
+
+
+                <article class="result-card">
+                    <span class="result-label">
+                        Incremental Effect
+                    </span>
+
+                    <h3>
+                        Email provided an additional uplift
+                    </h3>
+
+                    <p>
+                        The analysis estimated an incremental improvement from
+                        adding email to SMS, which motivated further validation
+                        in a controlled experiment.
+                    </p>
+                </article>
+
+
+                <article class="result-card">
+                    <span class="result-label">
+                        Data Insight
+                    </span>
+
+                    <h3>
+                        Data quality was critical
+                    </h3>
+
+                    <p>
+                        Inconsistent reminder counts and timestamps highlighted
+                        the importance of validating experiment instrumentation
+                        before drawing conclusions.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Recommendations
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Recommendations</h2>
+
+            <ol class="recommendation-list">
+
+                <li>
+                    <strong>Run a focused follow-up experiment.</strong>
+                    Compare SMS + email, SMS only, and the current default
+                    strategy to isolate the incremental value of email.
+                </li>
+
+                <li>
+                    <strong>Improve experiment instrumentation.</strong>
+                    Ensure reminder counts, timestamps, and treatment assignments
+                    are consistently recorded.
+                </li>
+
+                <li>
+                    <strong>Test timing and message content.</strong>
+                    Once the reminder strategy is validated, optimize when
+                    reminders are sent and what they communicate.
+                </li>
+
+                <li>
+                    <strong>Retain a control group.</strong>
+                    Maintain a holdout group during rollout so the impact of
+                    the chosen strategy can continue to be measured.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- =========================
+             Skills & Tools
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Skills & Tools</h2>
+
+            <div class="project-tags">
+
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>SQL</span>
+                <span>A/B Testing</span>
+                <span>Experiment Design</span>
+                <span>Statistical Analysis</span>
+                <span>Causal Inference</span>
+                <span>Data Cleaning</span>
+                <span>Data Visualization</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Footer Navigation
+        ========================== -->
+
+        <footer class="project-footer">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Portfolio
+            </a>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
