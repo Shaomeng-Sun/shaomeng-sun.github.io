@@ -380,6 +380,69 @@ body {
 
 
 /* =========================
+   Education
+========================= */
+
+.education-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 35px;
+}
+
+.education-item {
+    background: #ffffff;
+
+    padding: 28px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.education-item h3 {
+    margin: 0 0 8px;
+
+    color: #2563eb;
+
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.education-item h4 {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.education-item .date {
+    margin: 10px 0 18px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+.education-item ul {
+    margin: 0;
+
+    padding-left: 20px;
+}
+
+.education-item li {
+    margin-bottom: 10px;
+
+    color: #444;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
    Main Content
 ========================= */
 
