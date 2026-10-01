@@ -317,6 +317,318 @@ body {
 
 
 /* =========================
+   Project Pages
+========================= */
+
+.project-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 40px 80px;
+}
+
+
+/* Header */
+
+.project-header {
+    margin-bottom: 60px;
+}
+
+.back-link {
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.project-category {
+    margin: 0 0 10px;
+
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-header h1 {
+    margin: 0 0 18px;
+
+    font-size: 42px;
+    line-height: 1.15;
+}
+
+.project-summary {
+    max-width: 750px;
+
+    margin: 0 0 24px;
+
+    color: #555;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* Tags */
+
+.project-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.project-tags span {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #e8f0ff;
+
+    color: #2563eb;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Sections */
+
+.project-section {
+    margin-bottom: 55px;
+}
+
+.project-section h2 {
+    margin: 0 0 18px;
+
+    font-size: 27px;
+}
+
+.project-section p {
+    color: #555;
+
+    line-height: 1.7;
+}
+
+
+/* Highlight */
+
+.highlight-box {
+    padding: 25px;
+
+    border-left: 4px solid #2563eb;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.highlight-box h3 {
+    margin: 0 0 10px;
+
+    font-size: 20px;
+}
+
+
+/* Experiment Cards */
+
+.experiment-grid,
+.metrics-grid,
+.results-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 18px;
+}
+
+.experiment-card,
+.metric-card,
+.result-card {
+    padding: 22px;
+
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.experiment-card h3,
+.metric-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 18px;
+}
+
+.experiment-card p,
+.metric-card p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* Lists */
+
+.analysis-list {
+    padding-left: 22px;
+}
+
+.analysis-list li {
+    margin-bottom: 12px;
+
+    color: #555;
+
+    line-height: 1.6;
+}
+
+
+/* Methodology */
+
+.methodology {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+.methodology > div {
+    position: relative;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.step-number {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    margin-bottom: 15px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.methodology h3 {
+    margin: 0 0 8px;
+}
+
+.methodology p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* Results */
+
+.result-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #2563eb;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.result-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 19px;
+    line-height: 1.4;
+}
+
+.result-card p {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+
+/* Recommendations */
+
+.recommendation-list {
+    padding-left: 24px;
+}
+
+.recommendation-list li {
+    margin-bottom: 18px;
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+.project-footer {
+    padding-top: 20px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .project-page {
+        padding: 30px 20px 60px;
+    }
+
+    .project-header h1 {
+        font-size: 32px;
+    }
+
+    .methodology {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
    Professional Experience
 ========================= */
 
