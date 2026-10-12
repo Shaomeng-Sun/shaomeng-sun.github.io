@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Player Analytics Dashboard | Shaomeng Sun</title>
+
+    <meta
+        name="description"
+        content="A player analytics case study covering KPI design, behavioral analysis, SQL, Python, and data-driven product decisions."
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="project-page">
+
+        <!-- =========================
+             Project Header
+        ========================== -->
+
+        <header class="project-header">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <p class="project-category">
+                Product Analytics & Business Intelligence
+            </p>
+
+            <h1>Player Analytics Dashboard</h1>
+
+            <p class="project-summary">
+                An analytics dashboard designed to track player behavior,
+                monitor key performance indicators, and support data-informed
+                decisions for a live-service game and its companion app.
+            </p>
+
+            <div class="project-tags">
+                <span>SQL</span>
+                <span>Python</span>
+                <span>KPI Design</span>
+                <span>Player Analytics</span>
+                <span>Data Visualization</span>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             Overview
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                Live-service games generate behavioral data that can help
+                product teams understand engagement, retention, progression,
+                and monetization. A well-structured dashboard makes these
+                signals easier to monitor and investigate.
+            </p>
+
+            <p>
+                This project presents a framework for transforming raw player
+                event data into actionable metrics and visualizations that
+                support product analysis and prioritization.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Business Problem
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Business Problem</h2>
+
+            <div class="highlight-box">
+
+                <h3>How can player data inform product decisions?</h3>
+
+                <p>
+                    Product teams need reliable metrics to understand how
+                    players interact with a game, identify changes in
+                    engagement, and evaluate whether product updates are
+                    achieving their intended outcomes.
+                </p>
+
+            </div>
+
+            <ul class="analysis-list">
+
+                <li>
+                    Establish consistent definitions for important player
+                    and product KPIs.
+                </li>
+
+                <li>
+                    Monitor engagement, retention, progression, and
+                    monetization trends.
+                </li>
+
+                <li>
+                    Identify behavioral patterns and potential areas
+                    for further investigation.
+                </li>
+
+                <li>
+                    Make analytical findings accessible to product,
+                    development, and marketing stakeholders.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             Dashboard Preview
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Dashboard Preview</h2>
+
+            <p>
+                Use this section to showcase screenshots of your actual
+                dashboard. A clear visual example helps recruiters quickly
+                understand your analytical and visualization skills.
+            </p>
+
+            <!--
+            To add a screenshot, place the image in ../images/
+            and uncomment the following block.
+
+            <figure class="dashboard-figure">
+                <img
+                    src="../images/player-dashboard.png"
+                    alt="Player analytics dashboard showing engagement,
+                    retention, and monetization KPIs"
+                >
+                <figcaption>
+                    Player analytics dashboard — replace with a description
+                    of the actual metrics and visualizations shown.
+                </figcaption>
+            </figure>
+            -->
+
+            <div class="highlight-box">
+                <h3>What the dashboard should demonstrate</h3>
+                <p>
+                    Include a screenshot showing the main KPI overview,
+                    trends over time, and any useful filters or player
+                    segment comparisons that your implementation supports.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             KPIs
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Key Performance Indicators</h2>
+
+            <div class="metrics-grid">
+
+                <article class="metric-card">
+                    <h3>Engagement</h3>
+                    <p>
+                        Daily active users (DAU), sessions, session frequency,
+                        and time spent playing, where available.
+                    </p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Retention</h3>
+                    <p>
+                        Player return rates across defined cohorts and
+                        observation periods.
+                    </p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Monetization</h3>
+                    <p>
+                        Revenue, conversion rate, and average revenue per
+                        paying user, where supported by the data.
+                    </p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Progression</h3>
+                    <p>
+                        Progression milestones, completion behavior,
+                        and potential friction points.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Data Pipeline
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Data Processing & SQL</h2>
+
+            <p>
+                A reliable dashboard begins with well-defined data
+                transformations. This section should explain how raw events
+                are prepared and aggregated into metrics.
+            </p>
+
+            <div class="methodology">
+
+                <div>
+                    <span class="step-number">01</span>
+                    <h3>Data Preparation</h3>
+                    <p>
+                        Inspect event data, validate data types, handle
+                        missing values, and investigate duplicate records.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">02</span>
+                    <h3>SQL Transformations</h3>
+                    <p>
+                        Use joins, common table expressions, aggregations,
+                        and window functions to prepare analytical datasets.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">03</span>
+                    <h3>KPI Calculation</h3>
+                    <p>
+                        Define calculation rules, time windows, and
+                        aggregation levels for consistent metrics.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="step-number">04</span>
+                    <h3>Visualization</h3>
+                    <p>
+                        Present trends, comparisons, and key indicators
+                        in a format that supports investigation and decisions.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Analysis
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Player Behavior Analysis</h2>
+
+            <p>
+                Beyond monitoring KPIs, the dashboard can support deeper
+                investigation of player behavior and changes over time.
+                Document the analyses you actually performed.
+            </p>
+
+            <div class="experiment-grid">
+
+                <article class="experiment-card">
+                    <h3>Trend Analysis</h3>
+                    <p>
+                        Investigate changes in engagement and retention
+                        over time and around product updates.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>Cohort Analysis</h3>
+                    <p>
+                        Compare player groups by acquisition period,
+                        activity, or other available attributes.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>Segmentation</h3>
+                    <p>
+                        Examine differences between player segments
+                        to identify distinct behavioral patterns.
+                    </p>
+                </article>
+
+                <article class="experiment-card">
+                    <h3>Performance Monitoring</h3>
+                    <p>
+                        Flag meaningful KPI changes for further analysis
+                        rather than assuming that every change has a
+                        known cause.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Results
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Key Findings & Business Impact</h2>
+
+            <p>
+                Use this section to present evidence from your actual
+                analysis. Prioritize findings that led to a product decision,
+                changed a team's understanding, or improved a business metric.
+            </p>
+
+            <div class="results-grid">
+
+                <article class="result-card">
+                    <span class="result-label">Finding 1</span>
+                    <h3>[Insert analytical finding]</h3>
+                    <p>
+                        Describe the pattern you observed, the metric
+                        supporting it, and why it mattered.
+                    </p>
+                </article>
+
+                <article class="result-card">
+                    <span class="result-label">Finding 2</span>
+                    <h3>[Insert product insight]</h3>
+                    <p>
+                        Explain how the analysis informed a product,
+                        engagement, or economy design decision.
+                    </p>
+                </article>
+
+                <article class="result-card">
+                    <span class="result-label">Business Impact</span>
+                    <h3>[Insert verified outcome]</h3>
+                    <p>
+                        Quantify the outcome where reliable evidence
+                        is available. Explain your contribution and
+                        avoid attributing changes without sufficient evidence.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Technical Skills
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Tools & Skills</h2>
+
+            <div class="project-tags">
+                <span>SQL</span>
+                <span>BigQuery</span>
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>Data Cleaning</span>
+                <span>KPI Development</span>
+                <span>Statistical Analysis</span>
+                <span>Data Visualization</span>
+                <span>Product Analytics</span>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Footer
+        ========================== -->
+
+        <footer class="project-footer">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Portfolio
+            </a>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+Replace images/profile.jpg with your photo. Update contact information and project details.
