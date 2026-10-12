@@ -73,22 +73,20 @@ const sidebar = document.querySelector(".sidebar");
 const container = document.querySelector(".container");
 const toggle = document.querySelector(".toggle");
 
-toggle.addEventListener("click", () => {
+if (sidebar && container && toggle) {
+    toggle.addEventListener("click", () => {
+        const isCollapsed = sidebar.classList.toggle("collapsed");
 
-    const isCollapsed = sidebar.classList.toggle("collapsed");
+        container.classList.toggle("collapsed", isCollapsed);
 
-    container.classList.toggle("collapsed", isCollapsed);
+        toggle.textContent = isCollapsed ? "▶" : "◀";
 
-    toggle.textContent = isCollapsed ? "▶" : "◀";
-
-    toggle.setAttribute(
-        "aria-label",
-        isCollapsed
-            ? "Expand sidebar"
-            : "Collapse sidebar"
-    );
-
-});
+        toggle.setAttribute(
+            "aria-label",
+            isCollapsed ? "Expand sidebar" : "Collapse sidebar"
+        );
+    });
+}
 
 
 /* =========================
