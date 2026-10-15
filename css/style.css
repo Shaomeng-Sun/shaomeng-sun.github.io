@@ -1032,3 +1032,33 @@ body {
         font-size: 14px;
     }
 }
+
+
+/* =========================
+   Contact Links and Icons
+========================= */
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    color: #0A66C2;
+}
+
+.contact-icon {
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.linkedin-icon {
+    color: #0A66C2;
+}
