@@ -1062,3 +1062,13 @@ body {
 .linkedin-icon {
     color: #0A66C2;
 }
+
+/* GitHub Icon */
+
+.github-icon {
+    color: #24292f;
+}
+
+.contact-link:hover .github-icon {
+    color: #2563eb;
+}
