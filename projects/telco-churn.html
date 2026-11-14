@@ -4,16 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An independent customer churn analytics project combining SQL, dbt, Tableau and retrospective machine learning.">
+    <meta name="description" content="Business-focused customer churn analysis identifying high-churn segments, financial context and analytical priorities using SQL, dbt, Tableau and machine learning.">
 
-    <title>Telco Customer Churn Analytics | Shaomeng Sun</title>
+    <title>Customer Churn Analysis | Shaomeng Sun</title>
 
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-        /* Page-specific refinements. The main visual language still comes from style.css. */
+        /* Page-specific presentation styles. Shared typography and components
+           continue to come from the portfolio's main stylesheet. */
+        .tc-eyebrow {
+            margin: 0 0 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            opacity: 0.68;
+        }
+
+        .tc-intro {
+            max-width: 900px;
+        }
+
+        .tc-executive-takeaway {
+            margin-top: 22px;
+            padding: clamp(20px, 3vw, 32px);
+            border-radius: 14px;
+            background: rgba(80, 110, 130, 0.08);
+            border: 1px solid rgba(80, 110, 130, 0.16);
+        }
+
+        .tc-executive-takeaway h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .tc-executive-takeaway p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tc-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .tc-kpi-card {
+            min-width: 0;
+            padding: 18px 16px;
+            border: 1px solid rgba(100, 110, 120, 0.18);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .tc-kpi-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            line-height: 1.35;
+            opacity: 0.72;
+        }
+
+        .tc-kpi-value {
+            display: block;
+            font-size: clamp(1.55rem, 3vw, 2.15rem);
+            line-height: 1.12;
+            font-weight: 750;
+            letter-spacing: -0.035em;
+            overflow-wrap: anywhere;
+        }
+
+        .tc-kpi-note {
+            display: block;
+            margin-top: 7px;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            opacity: 0.68;
+        }
+
         .tc-dashboard-figure {
-            margin: 0;
+            margin: 20px 0 0;
         }
 
         .tc-dashboard-figure img {
@@ -21,63 +92,237 @@
             width: 100%;
             height: auto;
             border-radius: 12px;
+            border: 1px solid rgba(100, 110, 120, 0.18);
         }
 
         .tc-caption {
             margin-top: 10px;
             text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.75;
-        }
-
-        .tc-eyebrow {
-            margin: 0 0 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-size: 0.85rem;
+            line-height: 1.5;
             opacity: 0.7;
         }
 
-        .tc-insight-number {
+        .tc-finding-card {
+            height: 100%;
+        }
+
+        .tc-finding-number {
             display: block;
-            margin: 8px 0;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            line-height: 1.1;
+            margin: 9px 0 8px;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            line-height: 1;
+            font-weight: 750;
+            letter-spacing: -0.04em;
+        }
+
+        .tc-finding-count {
+            margin-top: 9px;
+            font-size: 0.88rem;
+            font-weight: 650;
+        }
+
+        .tc-caveat {
+            margin-top: 16px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            opacity: 0.75;
+        }
+
+        .tc-priority-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .tc-priority-card {
+            padding: 18px;
+            border: 1px solid rgba(100, 110, 120, 0.18);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.45);
+        }
+
+        .tc-priority-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            margin-bottom: 12px;
+            border-radius: 50%;
+            background: rgba(80, 110, 130, 0.12);
+            font-size: 0.82rem;
             font-weight: 700;
         }
 
-        .tc-metric-note {
-            margin-top: 6px;
-            font-size: 0.88rem;
-            opacity: 0.78;
+        .tc-priority-card h3 {
+            margin: 0 0 8px;
         }
 
-        .tc-model-note,
-        .tc-method-note {
+        .tc-priority-card p {
+            margin: 0;
             font-size: 0.92rem;
-            opacity: 0.82;
         }
 
-        .tc-source {
+        .tc-financial-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr);
+            gap: 22px;
+            align-items: center;
+            padding: clamp(20px, 3vw, 30px);
+            border-radius: 14px;
+            background: rgba(80, 110, 130, 0.08);
+            border: 1px solid rgba(80, 110, 130, 0.16);
+        }
+
+        .tc-financial-value {
+            display: block;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.05;
+            font-weight: 750;
+            letter-spacing: -0.04em;
+            overflow-wrap: anywhere;
+        }
+
+        .tc-financial-label {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            opacity: 0.72;
+        }
+
+        .tc-method-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .tc-method-card {
+            padding: 16px;
+            border-top: 3px solid rgba(80, 110, 130, 0.55);
+            border-radius: 8px;
+            background: rgba(100, 110, 120, 0.06);
+        }
+
+        .tc-method-card .step-number {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .tc-method-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .tc-method-card p {
+            margin: 0;
             font-size: 0.9rem;
-            opacity: 0.82;
         }
 
-        .tc-section-intro {
-            max-width: 850px;
+        .tc-model-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 18px 0;
         }
 
-        .tc-project-footer-links {
+        .tc-model-stat {
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(100, 110, 120, 0.07);
+        }
+
+        .tc-model-stat strong {
+            display: block;
+            font-size: 1.45rem;
+            line-height: 1.2;
+        }
+
+        .tc-model-stat span {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.82rem;
+            opacity: 0.72;
+        }
+
+        .tc-model-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 14px;
+        }
+
+        .tc-model-table th,
+        .tc-model-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(100, 110, 120, 0.18);
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        .tc-model-table th:last-child,
+        .tc-model-table td:last-child {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tc-note {
+            margin-top: 14px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            opacity: 0.75;
+        }
+
+        .tc-tools {
+            margin-top: 16px;
+        }
+
+        .tc-footer-links {
             display: flex;
             flex-wrap: wrap;
             gap: 18px;
             align-items: center;
         }
 
+        @media (max-width: 900px) {
+            .tc-kpi-grid,
+            .tc-method-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .tc-priority-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 640px) {
+            .tc-kpi-grid,
+            .tc-method-grid,
+            .tc-model-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tc-financial-panel {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .tc-model-table th,
+            .tc-model-table td {
+                padding: 9px 7px;
+                font-size: 0.84rem;
+            }
+
             .tc-dashboard-figure img {
                 border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .tc-kpi-grid,
+            .tc-method-grid,
+            .tc-model-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -98,107 +343,106 @@
             </a>
 
             <p class="project-category">
-                Independent Project &middot; Customer Analytics
+                Customer Analytics &amp; Business Intelligence
             </p>
 
-            <h1>Telco Customer Churn Analytics</h1>
+            <h1>Customer Churn: Where Should Retention Analysis Focus?</h1>
 
             <p class="project-summary">
-                I built an end-to-end analytics workflow to understand which
-                customer segments show higher observed churn, quantify the
-                associated financial context, and evaluate a model that
-                classifies the churn outcome recorded in the dataset.
+                I analysed 7,043 telecommunications customer records to identify
+                segments with elevated observed churn, quantify the associated
+                monthly charges, and assess how customer characteristics classify
+                the churn outcome recorded in the dataset.
             </p>
 
             <div class="project-tags">
+                <span>Customer Segmentation</span>
+                <span>Business Analytics</span>
                 <span>Python</span>
-                <span>SQL</span>
-                <span>dbt</span>
-                <span>SQLite</span>
+                <span>SQL &amp; dbt</span>
                 <span>Tableau</span>
-                <span>scikit-learn</span>
-                <span>SHAP</span>
+                <span>Machine Learning</span>
             </div>
 
         </header>
 
 
         <!-- =========================
-             Project snapshot
+             Executive summary
         ========================== -->
 
         <section class="project-section">
 
-            <h2>Project at a Glance</h2>
+            <p class="tc-eyebrow">Executive summary</p>
 
-            <div class="metrics-grid">
+            <div class="tc-executive-takeaway">
+                <h2>Churn is not evenly distributed across the customer base.</h2>
+                <p>
+                    Three segments show observed churn rates above 52%: customers
+                    in their first six months, month-to-month customers paying by
+                    electronic check, and Fiber Optic customers without online
+                    security or technical support. These patterns point to three
+                    areas for further retention investigation: early customer
+                    experience, contract and payment characteristics, and service
+                    engagement.
+                </p>
+            </div>
 
-                <article class="metric-card">
-                    <h3>Customers Analysed</h3>
-                    <p>7,043</p>
+            <div class="tc-kpi-grid">
+                <article class="tc-kpi-card">
+                    <span class="tc-kpi-label">Customers analysed</span>
+                    <strong class="tc-kpi-value">7,043</strong>
+                    <span class="tc-kpi-note">Customer-level snapshot</span>
                 </article>
 
-                <article class="metric-card">
-                    <h3>Overall Observed Churn</h3>
-                    <p>26.54%</p>
+                <article class="tc-kpi-card">
+                    <span class="tc-kpi-label">Overall observed churn</span>
+                    <strong class="tc-kpi-value">26.54%</strong>
+                    <span class="tc-kpi-note">1,869 recorded churn outcomes</span>
                 </article>
 
-                <article class="metric-card">
-                    <h3>Highest Segment Churn</h3>
-                    <p>55.01%</p>
+                <article class="tc-kpi-card">
+                    <span class="tc-kpi-label">Highest segment churn</span>
+                    <strong class="tc-kpi-value">55.01%</strong>
+                    <span class="tc-kpi-note">Fiber Optic · Neither support service</span>
                 </article>
 
-                <article class="metric-card">
-                    <h3>Test ROC-AUC</h3>
-                    <p>0.8324</p>
+                <article class="tc-kpi-card">
+                    <span class="tc-kpi-label">Churn-associated MRR</span>
+                    <strong class="tc-kpi-value">139,130.85</strong>
+                    <span class="tc-kpi-note">Snapshot monthly charges</span>
                 </article>
-
             </div>
 
         </section>
 
 
         <!-- =========================
-             Dashboard
+             Dashboard evidence
         ========================== -->
 
         <section class="project-section">
 
-            <h2>Explore the Analysis</h2>
+            <p class="tc-eyebrow">The evidence</p>
+            <h2>One view of the customer segments that stand out</h2>
+
+            <p class="tc-intro">
+                The Tableau dashboard brings together observed churn by tenure,
+                contract and payment combination, internet technology, and service
+                bundle. It is designed to help a business reader compare segment
+                patterns and see the financial context in one place.
+            </p>
 
             <figure class="tc-dashboard-figure">
                 <img
                     src="../images/telco-churn-dashboard.png"
-                    alt="Tableau dashboard showing customer churn patterns by tenure, contract, payment method, internet technology and service bundle."
+                    alt="Tableau dashboard showing customer churn patterns by tenure, contract and payment, internet technology and service bundle, alongside financial indicators."
                     loading="lazy"
                 >
                 <figcaption class="tc-caption">
-                    Tableau dashboard: customer segmentation, observed churn patterns and financial context.
+                    Customer Churn: Segment Patterns &amp; Financial Context · Tableau dashboard
                 </figcaption>
             </figure>
-
-        </section>
-
-
-        <!-- =========================
-             Business question
-        ========================== -->
-
-        <section class="project-section">
-
-            <p class="tc-eyebrow">The business question</p>
-            <div class="highlight-box">
-
-                <h3>Which customer groups have the highest observed churn, and where should further investigation focus?</h3>
-
-                <p>
-                    I examined churn across customer tenure, contract and payment
-                    combinations, internet technology, and service bundles. The
-                    goal was to turn a customer-level dataset into a clear view
-                    of segment differences that a business team could investigate.
-                </p>
-
-            </div>
 
         </section>
 
@@ -209,57 +453,60 @@
 
         <section class="project-section">
 
-            <h2>Three Patterns in the Data</h2>
+            <p class="tc-eyebrow">01 · Understand the pattern</p>
+            <h2>Three customer segments warrant closer attention</h2>
 
-            <p class="tc-section-intro">
-                The strongest observed churn rates appeared in early-tenure
-                customers, a particular contract and payment combination,
-                and a Fiber Optic service bundle without two support services.
+            <p class="tc-intro">
+                The segment analysis highlights where recorded churn is most
+                concentrated in the supplied snapshot. Customer counts are shown
+                alongside rates so the scale of each segment is clear.
             </p>
 
             <div class="results-grid">
 
-                <article class="result-card">
+                <article class="result-card tc-finding-card">
+                    <span class="result-label">Early customer lifecycle</span>
+                    <strong class="tc-finding-number">52.94%</strong>
+                    <h3>Customers with 0–6 months of tenure</h3>
+                    <p>
+                        784 of 1,481 customers in the earliest tenure band had a
+                        recorded churn outcome. Early tenure is therefore an
+                        important customer group to examine in more detail.
+                    </p>
+                    <p class="tc-finding-count">1,481 customers · 784 churned</p>
+                </article>
+
+                <article class="result-card tc-finding-card">
                     <span class="result-label">Contract &amp; payment</span>
-                    <span class="tc-insight-number">53.73%</span>
+                    <strong class="tc-finding-number">53.73%</strong>
                     <h3>Month-to-month + electronic check</h3>
                     <p>
-                        994 of 1,850 customers in this segment had a recorded
-                        churn outcome. This was the highest observed rate among
-                        the analysed contract and payment combinations.
+                        994 of 1,850 customers in this combination had a recorded
+                        churn outcome. It had the highest observed churn among the
+                        contract and payment combinations analysed.
                     </p>
+                    <p class="tc-finding-count">1,850 customers · 994 churned</p>
                 </article>
 
-                <article class="result-card">
+                <article class="result-card tc-finding-card">
                     <span class="result-label">Service bundle</span>
-                    <span class="tc-insight-number">55.01%</span>
+                    <strong class="tc-finding-number">55.01%</strong>
                     <h3>Fiber Optic without security or support</h3>
                     <p>
-                        971 of 1,765 customers in this group had a recorded
-                        churn outcome. The same absence of both services was
-                        also associated with higher churn in the DSL comparison.
+                        971 of 1,765 customers in this group had a recorded churn
+                        outcome. Customers without both services also showed higher
+                        observed churn in the DSL comparison.
                     </p>
-                </article>
-
-                <article class="result-card">
-                    <span class="result-label">Customer tenure</span>
-                    <span class="tc-insight-number">52.94%</span>
-                    <h3>Customers with 0&ndash;6 months of tenure</h3>
-                    <p>
-                        784 of 1,481 customers in the earliest tenure band had
-                        a recorded churn outcome, highlighting early tenure as
-                        an important segment to examine.
-                    </p>
+                    <p class="tc-finding-count">1,765 customers · 971 churned</p>
                 </article>
 
             </div>
 
-            <p class="tc-method-note">
-                These segments overlap. Their customer counts and financial
-                amounts should not be added together to estimate unique customers.
-                The figures describe associations in the supplied snapshot; they
-                do not establish that any contract, payment method or service
-                causes churn.
+            <p class="tc-caveat">
+                These segments overlap. Their counts and financial amounts should
+                not be added together to estimate unique customers. The results
+                describe associations in a customer snapshot; they do not show
+                that tenure, payment method or service choice causes churn.
             </p>
 
         </section>
@@ -271,26 +518,81 @@
 
         <section class="project-section">
 
-            <h2>Putting the Findings in Financial Context</h2>
+            <p class="tc-eyebrow">02 · Quantify the financial context</p>
+            <h2>139,130.85 in churn-associated monthly charges</h2>
 
-            <div class="highlight-box">
+            <div class="tc-financial-panel">
+                <div>
+                    <strong class="tc-financial-value">139,130.85</strong>
+                    <span class="tc-financial-label">Churn-associated MRR · dataset currency units</span>
+                </div>
+                <div>
+                    <p>
+                        This is the sum of snapshot monthly charges for the 1,869
+                        customers whose recorded churn label is positive. It
+                        quantifies the monthly charges associated with the churned
+                        customer group in this dataset.
+                    </p>
+                    <p class="tc-note">
+                        This is not a directly observed accounting measure of
+                        revenue lost in a particular month, nor a forecast of
+                        future losses. The dataset does not contain the dated
+                        billing and cancellation history needed to establish
+                        realised revenue loss.
+                    </p>
+                </div>
+            </div>
 
-                <p class="tc-eyebrow">Churn-associated MRR</p>
-                <h3 class="tc-insight-number">139,130.85</h3>
+        </section>
 
-                <p>
-                    This is the sum of snapshot monthly charges for the 1,869
-                    customers whose recorded churn label is positive. It helps
-                    quantify the monthly charges associated with the churned
-                    customer group in this dataset.
-                </p>
 
-                <p class="tc-method-note">
-                    This is not a directly observed accounting measure of revenue
-                    lost in a particular month, nor a forecast of future losses.
-                    The dataset does not provide the dated billing and cancellation
-                    history needed to establish realised revenue loss.
-                </p>
+        <!-- =========================
+             Business priorities
+        ========================== -->
+
+        <section class="project-section">
+
+            <p class="tc-eyebrow">03 · Translate insight into action</p>
+            <h2>Where should further retention analysis focus?</h2>
+
+            <p class="tc-intro">
+                The findings suggest three practical areas for investigation.
+                They are hypotheses to validate, not prescriptions based on
+                proven causal effects.
+            </p>
+
+            <div class="tc-priority-list">
+
+                <article class="tc-priority-card">
+                    <span class="tc-priority-number">01</span>
+                    <h3>Examine the early customer experience</h3>
+                    <p>
+                        Investigate onboarding, early service experience and
+                        support needs during the first six months. Use dated
+                        cohorts to determine when churn risk emerges.
+                    </p>
+                </article>
+
+                <article class="tc-priority-card">
+                    <span class="tc-priority-number">02</span>
+                    <h3>Investigate service engagement</h3>
+                    <p>
+                        Examine how online security and technical support relate
+                        to retention across DSL and Fiber Optic customers. Further
+                        analysis is needed before attributing an effect to either
+                        service.
+                    </p>
+                </article>
+
+                <article class="tc-priority-card">
+                    <span class="tc-priority-number">03</span>
+                    <h3>Review contract and payment patterns</h3>
+                    <p>
+                        Explore the month-to-month and electronic-check segment
+                        to understand customer needs, payment experience and
+                        whether the observed pattern persists over time.
+                    </p>
+                </article>
 
             </div>
 
@@ -298,64 +600,72 @@
 
 
         <!-- =========================
-             What I built
+             Individual contribution
         ========================== -->
 
         <section class="project-section">
 
-            <h2>How I Approached the Problem</h2>
+            <p class="tc-eyebrow">How I delivered the analysis</p>
+            <h2>From raw customer records to business evidence</h2>
 
-            <div class="methodology">
+            <p class="tc-intro">
+                I built the workflow across four connected stages, combining
+                data preparation, analytical modelling, business analysis and
+                model evaluation.
+            </p>
 
-                <div>
+            <div class="tc-method-grid">
+
+                <article class="tc-method-card">
                     <span class="step-number">01</span>
-                    <h3>Prepare the Data</h3>
+                    <h3>Prepare and validate</h3>
                     <p>
-                        Loaded the source dataset into SQLite with Python and
-                        profiled missing values, duplicates, customer identifiers,
-                        data types and categorical values. One data issue was 11
-                        whitespace-only values in <code>TotalCharges</code>, which
-                        were treated as missing rather than zero.
+                        Used Python and Pandas to load the source data into SQLite
+                        and profile missing values, duplicates, customer IDs,
+                        data types and categorical values. Identified 11
+                        whitespace-only <code>TotalCharges</code> entries and
+                        treated them as missing rather than zero.
                     </p>
-                </div>
+                </article>
 
-                <div>
+                <article class="tc-method-card">
                     <span class="step-number">02</span>
-                    <h3>Build the Analytical Model</h3>
+                    <h3>Structure the data</h3>
                     <p>
-                        Used dbt and SQL to organise the raw records into a
-                        customer-level fact table and customer, contract/billing
-                        and service dimensions. Added tests to check key data
-                        relationships and accepted churn values.
+                        Used dbt and SQL to build a customer-level fact table
+                        and customer, contract/billing and service dimensions.
+                        Added data tests for required values, accepted churn
+                        labels and fact-to-dimension relationships.
                     </p>
-                </div>
+                </article>
 
-                <div>
+                <article class="tc-method-card">
                     <span class="step-number">03</span>
-                    <h3>Find and Communicate Patterns</h3>
+                    <h3>Analyse and communicate</h3>
                     <p>
-                        Built SQL analyses for tenure, contract/payment combinations
-                        and service bundles. Exported analysis-ready datasets and
-                        brought the findings together in a Tableau dashboard.
+                        Wrote SQL analyses for tenure, contract/payment
+                        combinations and service bundles. Exported BI datasets
+                        with Python and developed the Tableau dashboard to
+                        communicate segment and financial patterns.
                     </p>
-                </div>
+                </article>
 
-                <div>
+                <article class="tc-method-card">
                     <span class="step-number">04</span>
-                    <h3>Evaluate a Classification Model</h3>
+                    <h3>Evaluate and explain</h3>
                     <p>
-                        Compared baseline and candidate classifiers using
-                        stratified cross-validation, selected a threshold on
-                        validation data, evaluated on a held-out test set, and
-                        used SHAP to examine model contributions.
+                        Compared classification models using stratified
+                        cross-validation, selected a threshold on validation
+                        data, evaluated on a held-out test set and used SHAP
+                        to examine model contributions.
                     </p>
-                </div>
+                </article>
 
             </div>
 
-            <p class="tc-method-note">
-                The workflow is organised into independently executable stages.
-                It is currently run manually; it is not a scheduled production
+            <p class="tc-note">
+                The workflow is modular and reproducible, but its stages are
+                currently run manually. It is not a scheduled production
                 pipeline or a real-time data system.
             </p>
 
@@ -363,93 +673,80 @@
 
 
         <!-- =========================
-             Machine-learning results
+             Supporting ML evidence
         ========================== -->
 
         <section class="project-section">
 
-            <h2>Machine Learning: A Supporting View</h2>
+            <p class="tc-eyebrow">Supporting analytical evidence</p>
+            <h2>Machine learning adds a classification perspective</h2>
 
-            <p>
-                I treated machine learning as a complementary way to examine
-                the recorded churn outcome, rather than as proof of future
-                customer behaviour. The target is the churn label in the
-                supplied snapshot.
+            <p class="tc-intro">
+                I also evaluated whether customer characteristics could classify
+                the churn outcome already recorded in the dataset. Logistic
+                Regression was selected because it achieved the highest mean
+                Average Precision in the five-fold cross-validation comparison.
             </p>
 
-            <div class="metrics-grid">
-
-                <article class="metric-card">
-                    <h3>Selected Model</h3>
-                    <p>Logistic Regression</p>
-                </article>
-
-                <article class="metric-card">
-                    <h3>Test Average Precision</h3>
-                    <p>0.6398</p>
-                </article>
-
-                <article class="metric-card">
-                    <h3>Test Recall</h3>
-                    <p>75.44%</p>
-                </article>
-
-                <article class="metric-card">
-                    <h3>Test Precision</h3>
-                    <p>52.74%</p>
-                </article>
-
+            <div class="tc-model-grid">
+                <div class="tc-model-stat">
+                    <strong>0.8324</strong>
+                    <span>Test ROC-AUC</span>
+                </div>
+                <div class="tc-model-stat">
+                    <strong>0.6398</strong>
+                    <span>Test Average Precision</span>
+                </div>
+                <div class="tc-model-stat">
+                    <strong>75.44%</strong>
+                    <span>Test recall</span>
+                </div>
             </div>
 
-            <p>
-                The dataset was split into training (70%), validation (15%)
-                and test (15%) partitions. Candidate models were compared
-                using five-fold stratified cross-validation on the training
-                partition, with Average Precision as the primary selection metric.
-                The classification threshold of 0.54 was selected using the
-                validation partition; the held-out test set was reserved for
-                final evaluation.
+            <table class="tc-model-table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Selected model</th>
+                        <td>Logistic Regression</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mean five-fold CV Average Precision</th>
+                        <td>0.6536</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Test precision</th>
+                        <td>52.74%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Test F1-score</th>
+                        <td>62.08%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Test Brier score</th>
+                        <td>0.1737</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Validation-selected threshold</th>
+                        <td>0.54</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="tc-note">
+                The data was split into training (70%), validation (15%) and test
+                (15%) partitions. Candidate models were compared using five-fold
+                stratified cross-validation on the training partition. The
+                threshold was selected using validation data; the test set of
+                1,057 records was reserved for final evaluation.
             </p>
 
-            <p class="tc-method-note">
-                The test set contains 1,057 records. The results measure
-                retrospective classification performance on held-out records
-                from the same source snapshot. They do not validate prediction
-                of churn over a future period such as the next 30 days.
+            <p class="tc-note">
+                This is retrospective classification of the recorded churn label,
+                not a validated prediction of whether a customer will churn in a
+                future period such as the next 30 days. The model has not been
+                tested on later-period customer data or used to evaluate the
+                impact of retention interventions.
             </p>
-
-        </section>
-
-
-        <!-- =========================
-             Business interpretation
-        ========================== -->
-
-        <section class="project-section">
-
-            <h2>What the Analysis Suggests</h2>
-
-            <ul class="analysis-list">
-                <li>
-                    <strong>Examine the early customer experience.</strong>
-                    The 0&ndash;6 month group has a substantially higher observed
-                    churn rate than the overall customer population, making
-                    early tenure a useful area for further investigation.
-                </li>
-                <li>
-                    <strong>Investigate the service-bundle relationship.</strong>
-                    Customers without online security and technical support show
-                    higher observed churn in both internet technology groups.
-                    The analysis does not establish whether adding either service
-                    would reduce churn.
-                </li>
-                <li>
-                    <strong>Validate the segment patterns with time-based data.</strong>
-                    Dated customer snapshots and subsequent outcomes would help
-                    establish whether these patterns persist and support
-                    prospective churn modelling.
-                </li>
-            </ul>
 
         </section>
 
@@ -460,31 +757,29 @@
 
         <section class="project-section">
 
-            <h2>Limitations &amp; Next Steps</h2>
-
-            <p>
-                The source is a single customer snapshot with a recorded churn
-                label. It does not contain dated customer observations,
-                cancellation dates or a defined future outcome window. As a result,
-                the analysis is descriptive and the model is retrospective.
-            </p>
+            <h2>What would strengthen the analysis next?</h2>
 
             <ul class="analysis-list">
                 <li>
-                    Obtain dated customer snapshots and define a clear outcome
-                    window, such as churn within the following 30 days.
+                    <strong>Introduce dated customer snapshots.</strong>
+                    Define an observation date and a fixed future outcome window,
+                    such as churn within the following 30 days.
                 </li>
                 <li>
+                    <strong>Validate patterns over time.</strong>
                     Train on earlier customer cohorts and evaluate on later
-                    cohorts to test performance over time.
+                    cohorts to test whether segment patterns and model performance
+                    persist.
                 </li>
                 <li>
-                    Select an operating threshold using intervention costs,
-                    customer value and the effectiveness of retention actions.
+                    <strong>Connect predictions to business economics.</strong>
+                    Select intervention thresholds using customer value,
+                    retention costs and the effectiveness of available actions.
                 </li>
                 <li>
-                    Use controlled experiments to test whether proposed retention
-                    interventions actually change customer outcomes.
+                    <strong>Test interventions.</strong>
+                    Use controlled experiments to establish whether proposed
+                    retention actions actually improve customer outcomes.
                 </li>
             </ul>
 
@@ -492,12 +787,12 @@
 
 
         <!-- =========================
-             Tools
+             Tools and source
         ========================== -->
 
         <section class="project-section">
 
-            <h2>Tools &amp; Skills</h2>
+            <h2>Tools &amp; Methods</h2>
 
             <div class="project-tags">
                 <span>Python</span>
@@ -506,7 +801,7 @@
                 <span>SQLite</span>
                 <span>dbt</span>
                 <span>Data Quality</span>
-                <span>Data Modelling</span>
+                <span>Dimensional Modelling</span>
                 <span>Tableau</span>
                 <span>scikit-learn</span>
                 <span>Logistic Regression</span>
@@ -515,14 +810,14 @@
                 <span>SHAP</span>
             </div>
 
-            <p class="tc-source">
+            <p class="tc-note">
                 Dataset source:
                 <a
                     href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Telco Customer Churn &ndash; Kaggle
+                    Telco Customer Churn dataset – Kaggle
                 </a>.
             </p>
 
