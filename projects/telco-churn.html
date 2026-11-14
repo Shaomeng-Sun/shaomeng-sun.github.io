@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Telco Customer Churn Analytics | Shaomeng Sun</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="project-page">
+
+        <!-- =========================
+             Header
+        ========================== -->
+
+        <header class="project-header">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <p class="project-category">
+                Data Analytics & Machine Learning
+            </p>
+
+            <h1>Telco Customer Churn Analytics</h1>
+
+            <p class="project-summary">
+                Built an end-to-end analytics and machine learning
+                workflow to investigate customer churn, identify
+                high-risk segments, and evaluate customer churn
+                classification using Python, SQL, dbt and Tableau.
+            </p>
+
+            <div class="project-tags">
+                <span>Python</span>
+                <span>SQL</span>
+                <span>dbt</span>
+                <span>SQLite</span>
+                <span>Tableau</span>
+                <span>Machine Learning</span>
+                <span>scikit-learn</span>
+                <span>SHAP</span>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             Dashboard Preview
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Dashboard Preview</h2>
+
+            <figure style="margin: 0;">
+                <img
+                    src="../images/telco-churn-dashboard.png"
+                    alt="Telco Customer Churn Analytics Tableau Dashboard"
+                    loading="lazy"
+                    style="
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                        border-radius: 12px;
+                    "
+                >
+
+                <figcaption style="
+                    margin-top: 10px;
+                    text-align: center;
+                    font-size: 0.9rem;
+                    opacity: 0.75;
+                ">
+                    Tableau dashboard presenting customer churn
+                    patterns, segment comparisons and financial context.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- =========================
+             Project Overview
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Project Overview</h2>
+
+            <p>
+                This project investigates customer churn using the
+                Telco Customer Churn dataset, consisting of 7,043
+                customer records and 21 original variables.
+            </p>
+
+            <p>
+                The project combines data ingestion, data quality
+                validation, SQL-based data transformation, business
+                analysis, Tableau visualisation, machine learning
+                and model explainability.
+            </p>
+
+            <p>
+                The objective is to understand which customer
+                segments exhibit higher observed churn rates,
+                quantify the associated financial indicators,
+                and develop a reproducible analytical workflow
+                that prepares the data for further investigation.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Business Question
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Business Questions</h2>
+
+            <div class="highlight-box">
+
+                <h3>Which customers are more likely to churn, and where should retention analysis focus?</h3>
+
+                <p>
+                    The analysis examines differences in observed
+                    churn across customer tenure, contract types,
+                    payment methods, internet technologies and
+                    service combinations.
+                </p>
+
+                <p>
+                    It also explores whether customer characteristics
+                    can help classify the recorded churn outcome
+                    using machine learning.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Dataset & Key Metrics
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Dataset & Key Metrics</h2>
+
+            <div class="metrics-grid">
+
+                <article class="metric-card">
+                    <h3>Total Customers</h3>
+                    <p>7,043</p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Churned Customers</h3>
+                    <p>1,869</p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Overall Observed Churn</h3>
+                    <p>26.54%</p>
+                </article>
+
+                <article class="metric-card">
+                    <h3>Original Variables</h3>
+                    <p>21</p>
+                </article>
+
+            </div>
+
+            <p>
+                The target variable is <strong>Churn</strong>,
+                converted into a binary variable called
+                <code>churn_flag</code>, where 1 represents
+                customers with a recorded churn outcome and
+                0 represents customers without a recorded
+                churn outcome.
+            </p>
+
+            <p>
+                Source:
+                <a
+                    href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Telco Customer Churn Dataset – Kaggle
+                </a>.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Data Pipeline
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Data Pipeline & Architecture</h2>
+
+            <p>
+                Developed a modular, reproducible data workflow
+                to transform raw customer data into structured
+                datasets for business intelligence and machine learning.
+            </p>
+
+            <div class="methodology">
+
+                <div>
+
+                    <span class="step-number">01</span>
+
+                    <h3>Data Ingestion</h3>
+
+                    <p>
+                        Used Python and Pandas to retrieve the
+                        source dataset and load raw customer
+                        records into a SQLite database.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">02</span>
+
+                    <h3>Data Quality Validation</h3>
+
+                    <p>
+                        Profiled missing values, duplicate records,
+                        customer identifiers, data types,
+                        numerical ranges and categorical consistency.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">03</span>
+
+                    <h3>Data Transformation</h3>
+
+                    <p>
+                        Used dbt and SQL to transform raw data
+                        into a dimensional Star Schema consisting
+                        of customer, contract and billing,
+                        service and churn fact tables.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">04</span>
+
+                    <h3>Analytics Data Preparation</h3>
+
+                    <p>
+                        Developed SQL analytical queries and
+                        Python export scripts to generate
+                        structured datasets for Tableau and
+                        machine learning.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <p>
+                The workflow is organised into independently
+                executable stages, with centralised configuration,
+                database validation and reusable Python modules.
+                It is currently executed manually rather than
+                through a scheduled production orchestrator.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Data Quality
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Data Quality & Validation</h2>
+
+            <p>
+                Data quality was assessed before conducting
+                business analysis and machine learning to
+                reduce the risk of misleading results.
+            </p>
+
+            <ul class="analysis-list">
+
+                <li>
+                    Verified 7,043 customer records and
+                    checked customer identifier uniqueness.
+                </li>
+
+                <li>
+                    Confirmed that the original dataset
+                    contained no exact duplicate rows.
+                </li>
+
+                <li>
+                    Identified 11 whitespace-only values
+                    in TotalCharges that needed to be treated
+                    as missing rather than zero.
+                </li>
+
+                <li>
+                    Validated numerical ranges and
+                    expected categorical values.
+                </li>
+
+                <li>
+                    Implemented dbt tests for required values,
+                    accepted churn labels and relationships
+                    between fact and dimension tables.
+                </li>
+
+                <li>
+                    Checked customer-level uniqueness and
+                    row-count consistency in downstream
+                    analytical datasets.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             Business Analytics
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Business Analytics</h2>
+
+            <p>
+                SQL queries were developed to investigate
+                customer churn across different behavioural,
+                contractual and service-related segments.
+            </p>
+
+            <div class="results-grid">
+
+                <article class="result-card">
+
+                    <span class="result-label">
+                        Contract & Payment
+                    </span>
+
+                    <h3>53.73% Observed Churn</h3>
+
+                    <p>
+                        Month-to-month customers using
+                        electronic check had the highest
+                        observed churn rate among the
+                        analysed contract and payment combinations.
+                    </p>
+
+                    <p>
+                        <strong>1,850 customers</strong>,
+                        including 994 churned customers.
+                    </p>
+
+                </article>
+
+
+                <article class="result-card">
+
+                    <span class="result-label">
+                        Service Bundle
+                    </span>
+
+                    <h3>55.01% Observed Churn</h3>
+
+                    <p>
+                        Fiber Optic customers without
+                        online security or technical support
+                        showed the highest observed churn
+                        rate in the service-bundle analysis.
+                    </p>
+
+                    <p>
+                        <strong>1,765 customers</strong>,
+                        including 971 churned customers.
+                    </p>
+
+                </article>
+
+
+                <article class="result-card">
+
+                    <span class="result-label">
+                        Customer Tenure
+                    </span>
+
+                    <h3>52.94% Observed Churn</h3>
+
+                    <p>
+                        Customers with 0–6 months of tenure
+                        exhibited substantially higher
+                        observed churn than the overall
+                        customer population.
+                    </p>
+
+                    <p>
+                        <strong>1,481 customers</strong>,
+                        including 784 churned customers.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <p>
+                The three segments overlap, so their counts
+                and financial metrics should not be added
+                together to estimate unique customers.
+                These findings describe associations in
+                the supplied customer snapshot rather
+                than causal relationships.
+            </p>
+
+            <p>
+                The financial analysis also calculated
+                churn-associated Monthly Recurring Revenue
+                (MRR) to quantify the snapshot monthly
+                charges associated with customers
+                carrying a recorded churn label.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Financial Analysis
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Financial Context</h2>
+
+            <div class="highlight-box">
+
+                <h3>139,130.85 in Churn-associated MRR</h3>
+
+                <p>
+                    The sum of snapshot monthly charges for
+                    all 1,869 customers with a recorded
+                    churn outcome was 139,130.85 in the
+                    dataset's currency units.
+                </p>
+
+                <p>
+                    This is a snapshot-based financial
+                    indicator, not a directly observed
+                    accounting measure of realised revenue
+                    loss or a forecast of future losses.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Analytical Methodology
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Analytical Approach</h2>
+
+            <div class="methodology">
+
+                <div>
+
+                    <span class="step-number">01</span>
+
+                    <h3>Customer Segmentation</h3>
+
+                    <p>
+                        Calculated observed churn rates
+                        across contract, payment, tenure
+                        and service-related customer segments.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">02</span>
+
+                    <h3>Financial Quantification</h3>
+
+                    <p>
+                        Calculated churn-associated MRR
+                        and compared financial indicators
+                        across customer segments.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">03</span>
+
+                    <h3>Data Visualisation</h3>
+
+                    <p>
+                        Developed an interactive Tableau
+                        dashboard to communicate key
+                        findings, segment differences
+                        and financial context.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <span class="step-number">04</span>
+
+                    <h3>Predictive Classification</h3>
+
+                    <p>
+                        Built and evaluated machine-learning
+                        models to classify the recorded
+                        customer churn outcome.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Machine Learning
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Machine Learning</h2>
+
+            <p>
+                Developed a classification workflow to
+                investigate whether customer characteristics
+                could distinguish customers with different
+                recorded churn outcomes.
+            </p>
+
+            <div class="metrics-grid">
+
+                <article class="metric-card">
+
+                    <h3>Input Features</h3>
+
+                    <p>19</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Training Set</h3>
+
+                    <p>70%</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Validation Set</h3>
+
+                    <p>15%</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Test Set</h3>
+
+                    <p>15%</p>
+
+                </article>
+
+            </div>
+
+            <h3>Model Development</h3>
+
+            <ul class="analysis-list">
+
+                <li>
+                    Compared Dummy Classifier,
+                    Logistic Regression, Random Forest
+                    and HistGradientBoosting.
+                </li>
+
+                <li>
+                    Used five-fold stratified cross-validation
+                    on the training set, with Average
+                    Precision (PR-AUC) as the primary
+                    model-selection metric.
+                </li>
+
+                <li>
+                    Implemented numerical preprocessing
+                    using median imputation, missing-value
+                    indicators and standardisation.
+                </li>
+
+                <li>
+                    Applied categorical imputation and
+                    one-hot encoding, with support for
+                    previously unseen categories.
+                </li>
+
+                <li>
+                    Selected the classification threshold
+                    using validation data only, while
+                    preserving the test set for final evaluation.
+                </li>
+
+            </ul>
+
+            <p>
+                Logistic Regression was selected based
+                on its highest mean cross-validation
+                Average Precision in the recorded
+                model comparison.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Model Evaluation
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Model Evaluation</h2>
+
+            <p>
+                The selected Logistic Regression pipeline
+                was evaluated on the held-out test set
+                of 1,057 customers.
+            </p>
+
+            <div class="metrics-grid">
+
+                <article class="metric-card">
+
+                    <h3>ROC-AUC</h3>
+
+                    <p>0.8324</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Average Precision</h3>
+
+                    <p>0.6398</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Precision</h3>
+
+                    <p>52.74%</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Recall</h3>
+
+                    <p>75.44%</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>F1-score</h3>
+
+                    <p>62.08%</p>
+
+                </article>
+
+                <article class="metric-card">
+
+                    <h3>Brier Score</h3>
+
+                    <p>0.1737</p>
+
+                </article>
+
+            </div>
+
+            <p>
+                The classification threshold was 0.54,
+                selected using validation data to
+                maximise F1-score, with recall and
+                precision used as tie-breakers.
+            </p>
+
+            <p>
+                The test results measure retrospective
+                classification performance on held-out
+                records from the same customer snapshot.
+                They do not establish performance on
+                future customer populations or
+                future churn periods.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Model Explainability
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Model Explainability</h2>
+
+            <p>
+                Applied SHAP to investigate how customer
+                characteristics contributed to the
+                selected model's predictions.
+            </p>
+
+            <ul class="analysis-list">
+
+                <li>
+                    Examined global feature contributions
+                    to understand which variables were
+                    most influential across the analysed
+                    customer records.
+                </li>
+
+                <li>
+                    Investigated individual customer
+                    predictions to understand how
+                    different features contributed
+                    to model outputs.
+                </li>
+
+                <li>
+                    Used model explanations to improve
+                    transparency and interpretation
+                    of the classification results.
+                </li>
+
+            </ul>
+
+            <p>
+                SHAP values explain model behaviour
+                and should not be interpreted as
+                evidence that a customer characteristic
+                causes churn.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Reusable Scoring
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Reusable Model Scoring</h2>
+
+            <p>
+                Prepared a reusable scoring interface
+                that loads the saved preprocessing
+                and classification pipeline to process
+                a separate customer CSV.
+            </p>
+
+            <p>
+                The interface validates the required
+                feature columns, calculates churn
+                probabilities, applies the saved
+                classification threshold and exports
+                customer-level scores.
+            </p>
+
+            <p>
+                The scoring component is prepared
+                for future compatible customer data.
+                No genuinely new customer dataset
+                has yet been scored.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             Limitations
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Limitations & Future Improvements</h2>
+
+            <ul class="analysis-list">
+
+                <li>
+                    The source dataset is a customer
+                    snapshot without dated customer
+                    observations or subsequent
+                    outcome windows.
+                </li>
+
+                <li>
+                    The machine-learning task is
+                    retrospective classification
+                    of the recorded churn outcome,
+                    not validated future churn
+                    forecasting.
+                </li>
+
+                <li>
+                    Business segment differences
+                    are observational associations
+                    and do not establish causality.
+                </li>
+
+                <li>
+                    Future modelling could use
+                    dated customer snapshots and
+                    a defined prediction horizon
+                    to evaluate prospective churn
+                    prediction.
+                </li>
+
+                <li>
+                    Further improvements could include
+                    automated workflow orchestration,
+                    data drift monitoring and
+                    business-specific classification
+                    thresholds.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             Skills & Tools
+        ========================== -->
+
+        <section class="project-section">
+
+            <h2>Skills & Tools</h2>
+
+            <div class="project-tags">
+
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>SQL</span>
+                <span>SQLite</span>
+                <span>dbt</span>
+                <span>Data Ingestion</span>
+                <span>Data Validation</span>
+                <span>Data Modelling</span>
+                <span>Data Analytics</span>
+                <span>Tableau</span>
+                <span>scikit-learn</span>
+                <span>Logistic Regression</span>
+                <span>Cross-validation</span>
+                <span>Model Evaluation</span>
+                <span>SHAP</span>
+                <span>Feature Engineering</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Footer Navigation
+        ========================== -->
+
+        <footer class="project-footer">
+
+            <a href="../index.html" class="back-link">
+                ← Back to Portfolio
+            </a>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
