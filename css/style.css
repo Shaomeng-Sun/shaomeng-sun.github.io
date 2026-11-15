@@ -1075,57 +1075,131 @@ body {
 
 
 /* =========================================
-   Project Preview Card
+   Unified Project Preview Cards
 ========================================= */
 
-.project-card {
+.card.project-card {
+    padding: 0;
     overflow: hidden;
+    min-width: 0;
+    height: 100%;
 }
 
+/* Make the entire card clickable */
+
 .project-card-link {
-    display: block;
-    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     color: inherit;
+    text-decoration: none;
 }
+
+/* Consistent image frame for every project */
+
+.project-card-media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #eef3f9;
+}
+
+/* Show the entire image without cropping */
 
 .project-card-image {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 16px;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
+
+/* Card text content */
 
 .project-card-content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 10px;
+    padding: 20px 22px 22px;
+    min-width: 0;
 }
 
+/* Project category */
+
 .project-card-category {
+    margin: 0;
+    color: #2563eb;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    opacity: 0.65;
 }
+
+/* Project title */
 
 .project-card-content h3 {
     margin: 0;
+    color: #222;
+    font-size: 19px;
+    line-height: 1.4;
 }
+
+/* Project description */
 
 .project-card-content p {
     margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
+/* Technology stack */
+
 .project-card-tech {
-    font-size: 0.82rem;
-    opacity: 0.7;
+    margin-top: auto !important;
+    padding-top: 8px;
+    color: #777 !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
 }
+
+/* Call to action */
 
 .project-card-cta {
     display: inline-block;
-    margin-top: 5px;
+    margin-top: 4px;
+    color: #2563eb;
+    font-size: 14px;
     font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.project-card-link:hover .project-card-cta {
+    color: #1d4ed8;
+}
+
+/* Keyboard accessibility */
+
+.project-card-link:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: -3px;
+    border-radius: 18px;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 600px) {
+
+    .project-card-content {
+        padding: 16px 18px 20px;
+    }
+
+    .project-card-content h3 {
+        font-size: 18px;
+    }
+
 }
