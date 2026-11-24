@@ -1299,11 +1299,17 @@ body {
 .project-card-media {
     width: 100%;
     aspect-ratio: 16 / 10;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: hidden;
+
     background: #eef3f9;
+
+    border-radius: 8px;
+    margin-top: 8px;
 }
 
 /* Show the entire image without cropping */
@@ -1359,8 +1365,8 @@ body {
 /* Technology stack */
 
 .project-card-tech {
-    margin-top: auto !important;
-    padding-top: 8px;
+    margin-top: 0;
+    padding-top: 4px;
     color: #777 !important;
     font-size: 12px !important;
     line-height: 1.5 !important;
@@ -1370,10 +1376,15 @@ body {
 
 .project-card-cta {
     display: inline-block;
-    margin-top: 4px;
+
+    margin-top: auto;
+    padding-top: 8px;
+
     color: #2563eb;
+
     font-size: 14px;
     font-weight: 600;
+
     transition: color 0.2s ease;
 }
 
