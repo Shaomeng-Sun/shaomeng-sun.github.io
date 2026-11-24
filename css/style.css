@@ -665,33 +665,26 @@ body {
 }
 
 
-/* Company Name */
+/* Job Title */
 
-.experience-company {
+.experience-role {
     margin: 0 0 6px;
-
     color: #2563eb;
-
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
-
     line-height: 1.3;
 }
 
 
-/* Job Title */
+/* Company Name */
 
-.experience-role {
+.experience-company {
     margin: 0 0 8px;
-
-    color: #334155;
-
+    color: #222;
     font-size: 17px;
     font-weight: 600;
-
     line-height: 1.5;
 }
-
 
 /* Location and Dates */
 
@@ -844,7 +837,7 @@ body {
     }
 
     .experience-company {
-        font-size: 24px;
+        font-size: 22px;
     }
 
 }
@@ -862,13 +855,13 @@ body {
         border-radius: 14px;
     }
 
-    .experience-company {
-        font-size: 22px;
-    }
-
-    .experience-role {
-        font-size: 15px;
-    }
+   .experience-role {
+       font-size: 20px;
+   }
+   
+   .experience-company {
+       font-size: 15px;
+   }
 
     .experience-meta {
         font-size: 12px;
