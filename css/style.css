@@ -1520,3 +1520,88 @@ body {
     }
 
 }
+
+
+/* Ecommerce project preview: scoped to one card; other cards are unchanged. */
+.ecommerce-card-media {background:#edf4fc;padding:14px;}
+.ecommerce-card-preview {width:100%;height:100%;border-radius:9px;padding:15px;background:#fff;border:1px solid #dce7f6;display:flex;flex-direction:column;justify-content:space-between;gap:10px;overflow:hidden;}
+.ecommerce-preview-heading {font-size:10px;font-weight:750;color:#2563eb;letter-spacing:.1em;}
+.ecommerce-preview-metrics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;}
+.ecommerce-preview-metrics div {min-width:0;}
+.ecommerce-preview-metrics strong {display:block;color:#223754;font-size:clamp(13px,1.5vw,21px);line-height:1.2;}
+.ecommerce-preview-metrics small {display:block;font-size:9px;color:#677991;white-space:nowrap;}
+.ecommerce-preview-bars {display:flex;flex-direction:column;gap:5px;}
+.ecommerce-preview-bars i {display:block;width:var(--bar);height:7px;background:#4a95bd;border-radius:2px;}
+.ecommerce-preview-bars i:nth-child(even) {background:#8ab8d3;}
+.ecommerce-preview-footnote {font-size:9px;color:#677991;line-height:1.3;}
+
+/* ============================================================
+   HOMEPAGE REFERENCE DESIGN — scoped to .reference-home
+   Preserved in original override order to avoid layout changes.
+   ============================================================ */
+
+/* Reference-inspired HOME PAGE ONLY. Other project pages keep their original CSS. */
+.reference-home {background:#fff;color:#131b2c;}
+.reference-home .container {grid-template-columns:360px minmax(0,1fr);min-height:100vh;}
+.reference-home .container.collapsed {grid-template-columns:220px minmax(0,1fr);}
+.reference-home .sidebar {background:#fafcff;border-right:1px solid #dce4ef;padding:36px 48px 35px;}
+.reference-home .toggle {top:13px;right:12px;width:28px;height:28px;background:#eef3fb;color:#52677d;opacity:.65;}
+.reference-home .toggle:hover {opacity:1;background:#e0ebff;color:#1652bb;}
+.reference-home .profile {display:flex;flex-direction:column;align-items:flex-start;height:auto;gap:17px;}
+.reference-home .avatar {width:190px;height:190px;object-fit:cover;border-radius:50%;margin:0 auto 0;}
+.reference-home .profile-info {display:block;width:100%;}
+.reference-home .profile-info h1 {font-size:29px;letter-spacing:-.035em;font-weight:750;line-height:1.13;white-space:normal;margin:0 0 18px;color:#111827;}
+.reference-home .roles {display:flex;align-items:flex-start;flex-direction:column;gap:7px;list-style:none;color:#152033;}
+.reference-home .roles li {display:inline-flex;align-items:center;border-radius:999px;background:#eaf0f8;padding:5px 13px;font-size:14px;font-weight:650;white-space:nowrap;line-height:1.3;}
+.reference-home .roles li::before {content:'▥';margin-right:9px;font-size:16px;color:#1553c6;}
+.reference-home .roles li:nth-child(2)::before {content:'▤';}
+.reference-home .roles li:nth-child(3)::before {content:'◎';}
+.reference-home .contact {margin-top:18px;padding-top:11px;border-top:1px solid #d7dfeb;}
+.reference-home .contact p {font-size:14px;margin:11px 0;color:#223147;line-height:1.5;overflow-wrap:anywhere;}
+.reference-home .contact a {color:#1553b9;}
+.reference-home .contact-link {gap:7px;}
+.reference-home .contact-icon {height:18px;width:18px;}
+.reference-home .about {border-top:1px solid #d7dfeb;margin-top:22px;padding-top:17px;color:#1e293b;}
+.reference-home .about h2 {font-size:21px;margin-bottom:12px;color:#131c2d;}
+.reference-home .about p {font-size:14px;line-height:1.62;}
+.reference-home .content {padding:88px 40px 48px 50px;position:relative;min-width:0;background:linear-gradient(165deg,#fff 0%,#fff 43%,#f8fbff 100%);}
+.reference-home .content:before {content:'';position:absolute;left:0;right:0;top:64px;border-top:1px solid #e8edf4;pointer-events:none;}
+.reference-home .portfolio-hero {padding:0;margin:4px 0 20px;}
+.reference-home .hero-eyebrow,.reference-home .hero-description {display:none;}
+.reference-home .hero-title {margin:0;font-size:clamp(29px,2.9vw,48px);letter-spacing:-.047em;font-weight:780;color:#11151d;line-height:1.2;}
+.reference-home .hero-accent {color:#1254ca;}
+.reference-home .tabs {gap:18px;flex-wrap:wrap;border-bottom:1px solid #dfe7f1;padding:0;margin:18px 0 27px;}
+.reference-home .tab {display:flex;gap:12px;align-items:center;background:transparent;color:#334155;border-radius:10px 10px 0 0;padding:13px 19px 15px;font-size:17px;font-weight:520;line-height:1.3;box-shadow:none;border-bottom:3px solid transparent;}
+.reference-home .tab:hover {transform:none;color:#164cbb;box-shadow:none;background:#f2f7ff;}
+.reference-home .tab.active {color:#0c4cbe;border-color:#1b58d1;background:#eff5ff;font-weight:680;}
+.reference-home .tab-icon {font-size:22px;line-height:1;color:inherit;}
+.reference-home .cards {grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;align-items:stretch;}
+.reference-home .card.project-card {border-radius:15px;border:1px solid #d3ddea;box-shadow:0 2px 5px rgba(32,70,113,.04);transition:border-color .2s,box-shadow .2s,transform .2s;}
+.reference-home .card.project-card:hover {transform:translateY(-3px);border-color:#2665eb;box-shadow:0 10px 20px rgba(31,83,160,.1);}
+.reference-home .project-card-content {padding:20px 21px 19px;gap:12px;}
+.reference-home .project-card-category {align-self:flex-start;display:inline-flex;background:#e5efff;color:#1353bc;border-radius:999px;padding:6px 13px;font-size:13px;letter-spacing:0;text-transform:none;font-weight:650;}
+.reference-home .project-card-content h3 {color:#111827;font-size:clamp(17px,1.65vw,24px);line-height:1.28;letter-spacing:-.025em;font-weight:740;}
+.reference-home .project-card-content>p:not(.project-card-tech) {font-size:15px;line-height:1.52;color:#1d2939;min-height:68px;}
+.reference-home .project-card-content .project-card-tech {background:#f1f5fb;border-radius:9px;padding:9px 12px;font-size:12px!important;color:#243245!important;line-height:1.45!important;}
+.reference-home .project-card-media {aspect-ratio:1.88/1;border:1px solid #e0e8f2;border-radius:9px;background:#f3f7fc;margin:0;}
+.reference-home .ecommerce-card-media {padding:0;background:#f1f5fb;}
+.reference-home .ecommerce-card-preview {border:0;border-radius:6px;background:#fff;padding:13px 15px;}
+.reference-home .ecommerce-preview-heading {background:#2369aa;color:#fff;margin:-13px -15px 8px;padding:9px 15px;font-size:13px;letter-spacing:.02em;}
+.reference-home .ecommerce-preview-metrics {gap:6px;}
+.reference-home .ecommerce-preview-metrics div {border:1px solid #e1e9f4;border-radius:7px;padding:8px 5px;text-align:center;}
+.reference-home .ecommerce-preview-metrics strong {font-size:clamp(15px,1.5vw,22px);color:#172a45;}
+.reference-home .ecommerce-preview-metrics small {font-size:10px;white-space:normal;}
+.reference-home .ecommerce-preview-bars {gap:7px;}
+.reference-home .ecommerce-preview-bars i {height:9px;}
+.reference-home .project-card-cta {font-size:17px;padding-top:2px;color:#1254ca;}
+.reference-home .sidebar.collapsed {padding:53px 14px 20px;}
+.reference-home .sidebar.collapsed .profile {display:block;}
+.reference-home .sidebar.collapsed .avatar {display:none;}
+.reference-home .sidebar.collapsed .profile-info h1 {font-size:18px;white-space:normal;}
+.reference-home .sidebar.collapsed .roles li {font-size:11px;padding:4px 7px;white-space:normal;}
+.reference-home .sidebar.collapsed .contact p {font-size:11px;white-space:normal;}
+.reference-home .sidebar.collapsed .about {display:none;}
+@media(max-width:1280px) { .reference-home .container {grid-template-columns:310px minmax(0,1fr);} .reference-home .container.collapsed {grid-template-columns:200px minmax(0,1fr);} .reference-home .sidebar {padding:34px 28px;} .reference-home .content {padding:85px 30px 40px;} .reference-home .project-card-content {padding:18px;} .reference-home .project-card-content h3 {font-size:19px;} }
+@media(max-width:1050px) { .reference-home .cards {gap:18px;} .reference-home .hero-title {font-size:31px;} .reference-home .project-card-content>p:not(.project-card-tech) {min-height:0;} }
+@media(max-width:900px) { .reference-home .container,.reference-home .container.collapsed {grid-template-columns:1fr;} .reference-home .sidebar,.reference-home .sidebar.collapsed {padding:22px 24px;border-right:0;border-bottom:1px solid #dce4ef;} .reference-home .profile,.reference-home .sidebar.collapsed .profile {display:flex;flex-direction:row;align-items:center;gap:20px;} .reference-home .avatar,.reference-home .sidebar.collapsed .avatar {display:block;width:110px;height:110px;} .reference-home .profile-info,.reference-home .sidebar.collapsed .profile-info {width:auto;} .reference-home .profile-info h1,.reference-home .sidebar.collapsed .profile-info h1 {font-size:23px;margin-bottom:10px;} .reference-home .roles,.reference-home .sidebar.collapsed .roles {flex-direction:row;flex-wrap:wrap;} .reference-home .sidebar.collapsed .roles li {font-size:12px;} .reference-home .contact {margin-top:15px;} .reference-home .about,.reference-home .sidebar.collapsed .about {display:block;margin-top:15px;} .reference-home .content {padding:38px 24px 40px;} .reference-home .content:before {display:none;} }
+@media(max-width:670px) { .reference-home .cards {grid-template-columns:1fr;} .reference-home .profile,.reference-home .sidebar.collapsed .profile {flex-direction:column;align-items:flex-start;} .reference-home .avatar {margin-left:0;} .reference-home .tabs {gap:5px;} .reference-home .tab {padding:11px 10px;font-size:13px;gap:4px;} .reference-home .tab-icon {font-size:16px;} .reference-home .hero-title {font-size:clamp(28px,7.5vw,36px);} .reference-home .project-card-content h3 {font-size:21px;} }
