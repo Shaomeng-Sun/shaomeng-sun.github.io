@@ -1465,7 +1465,8 @@ body {
 /* Supporting Description */
 
 .hero-description {
-    max-width: 800px;
+    width: 100%;
+   max-width: none;
 
     margin: 0;
 
