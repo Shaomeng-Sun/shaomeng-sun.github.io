@@ -1297,7 +1297,7 @@ body {
 /* Consistent image frame for every project */
 
 .project-card-media {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 16 / 10;
 
     display: flex;
@@ -1309,7 +1309,7 @@ body {
     background: #eef3f9;
 
     border-radius: 8px;
-    margin-top: 8px;
+    margin-top: 8px auto 0;
 }
 
 /* Show the entire image without cropping */
