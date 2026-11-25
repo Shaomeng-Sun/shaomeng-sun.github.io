@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SQL and BigQuery ecommerce analytics case study: 360,129 sessions, conversion tracking, product revenue, source attribution and data-quality checks.">
+  <title>Ecommerce Growth &amp; Conversion Analysis | Shaomeng Sun</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Page-specific styles; shared palette and page typography come from style.css. */
+    .ec-eyebrow {font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;font-weight:700;opacity:.7;margin:0 0 10px;}
+    .ec-lede {max-width:830px;font-size:1.08rem;line-height:1.75;color:#475569;}
+    .ec-panel {padding:clamp(20px,3vw,30px);border-radius:14px;border:1px solid #dfe6ef;background:#fff;}
+    .ec-takeaway {background:#f4f8ff;border-color:#d8e5f7;}
+    .ec-panel h2,.ec-panel h3 {margin-top:0;}
+    .ec-kpis {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 0;}
+    .ec-kpi {border:1px solid #e1e8f0;border-radius:12px;padding:17px 14px;background:white;min-width:0;}
+    .ec-kpi strong {display:block;font-size:clamp(1.45rem,2.5vw,2rem);letter-spacing:-.035em;line-height:1.2;color:#172e4b;}
+    .ec-kpi span {display:block;color:#66758a;font-size:.8rem;line-height:1.5;margin-top:7px;}
+    .ec-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+    .ec-finding {border:1px solid #dfe6ef;border-radius:14px;padding:20px;background:#fff;min-width:0;}
+    .ec-finding .ec-num {font-weight:750;font-size:clamp(1.65rem,2.8vw,2.15rem);color:#2563eb;letter-spacing:-.03em;}
+    .ec-finding h3 {font-size:1.03rem;margin:12px 0 6px;line-height:1.4;}
+    .ec-finding p,.ec-panel p {line-height:1.7;color:#475569;}
+    .ec-finding p {font-size:.93rem;margin:0;}
+    .ec-section-intro {color:#475569;line-height:1.75;max-width:850px;}
+    .ec-dashboard-placeholder {padding:30px;background:linear-gradient(145deg,#f7faff,#e9f1fa);border:1px dashed #a9bbd3;border-radius:12px;text-align:center;}
+    .ec-dashboard-placeholder p {max-width:590px;margin:9px auto;color:#53647a;}
+    .ec-dashboard-placeholder strong {color:#1f3e63;display:block;font-size:1.1rem;}
+    .ec-dashboard-shot {display:block;width:100%;height:auto;max-height:520px;object-fit:contain;border:1px solid #dfe6ef;border-radius:12px;}
+    .ec-caption {color:#69788c;font-size:.84rem;line-height:1.6;margin:10px 0 0;}
+    .ec-data {width:100%;border-collapse:collapse;font-size:.9rem;}
+    .ec-data th,.ec-data td {text-align:left;border-bottom:1px solid #e5eaf0;padding:12px 10px;vertical-align:top;}
+    .ec-data th {background:#f7f9fc;color:#34445c;}
+    .ec-data td:nth-child(n+2),.ec-data th:nth-child(n+2) {font-variant-numeric:tabular-nums;}
+    .ec-table-wrap {overflow-x:auto;}
+    .ec-steps {counter-reset:step;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+    .ec-step {padding:19px;border:1px solid #e1e8f0;border-radius:12px;min-width:0;}
+    .ec-step::before {counter-increment:step;content:counter(step,decimal-leading-zero);display:block;color:#2563eb;font-weight:750;margin-bottom:8px;}
+    .ec-step h3 {font-size:1rem;margin:0 0 8px;}
+    .ec-step p {font-size:.9rem;margin:0;color:#475569;line-height:1.65;}
+    .ec-list {padding-left:23px;line-height:1.75;color:#475569;}
+    .ec-list li+li {margin-top:8px;}
+    .ec-callout {border-left:4px solid #2563eb;background:#f6f9ff;padding:15px 19px;border-radius:8px;color:#40526b;line-height:1.65;}
+    .ec-links {display:flex;flex-wrap:wrap;gap:12px;margin-top:17px;}
+    .ec-link {display:inline-flex;align-items:center;padding:10px 15px;border:1px solid #c7d7ee;border-radius:9px;text-decoration:none;color:#1d4ed8;font-weight:650;}
+    .ec-link:hover {background:#eff6ff;}
+    .ec-section-title {margin-bottom:12px;}
+    @media(max-width:800px){.ec-kpis{grid-template-columns:repeat(2,minmax(0,1fr));}.ec-grid,.ec-steps{grid-template-columns:1fr;}}
+    @media(max-width:480px){.ec-kpis{grid-template-columns:1fr;}.ec-data{font-size:.82rem;}.ec-data th,.ec-data td{padding:9px 7px;}}
+  </style>
+</head>
+<body>
+<main class="project-page">
+  <header class="project-header">
+    <a href="../index.html" class="back-link">&larr; Back to Home</a>
+    <p class="project-category">Ecommerce &amp; Product Analytics</p>
+    <h1>Ecommerce Growth &amp; Conversion Analysis</h1>
+    <p class="project-summary">Where does ecommerce revenue come from, where do recorded journeys break down, and how much can we trust the underlying measurement?</p>
+    <div class="project-tags">
+      <span>SQL</span><span>BigQuery</span><span>GA4</span><span>Looker Studio</span><span>Session Funnels</span><span>Data Quality</span>
+    </div>
+  </header>
+
+  <section class="project-section" aria-labelledby="ec-summary">
+    <p class="ec-eyebrow">Executive summary</p>
+    <div class="ec-panel ec-takeaway">
+      <h2 id="ec-summary">Business insight depends on measurement quality.</h2>
+      <p>Using a public GA4 ecommerce sample, I built and validated a SQL-based analytical pipeline to investigate conversion activity, resolved transactions, product revenue and recorded traffic-source segments. The results identify revenue concentration in Apparel and show that missing tracking events and purchase identifiers materially constrain funnel and late-January revenue interpretation.</p>
+      <p>This is a <strong>descriptive portfolio case study</strong>. No live business changes, incremental revenue gains or causal conversion improvements are claimed.</p>
+    </div>
+    <div class="ec-kpis" aria-label="Project headline metrics">
+      <div class="ec-kpi"><strong>360,129</strong><span>Observed sessions</span></div>
+      <div class="ec-kpi"><strong>4,871</strong><span>Resolved transactions</span></div>
+      <div class="ec-kpi"><strong>$337,229</strong><span>Resolved transaction revenue</span></div>
+      <div class="ec-kpi"><strong>1.22%</strong><span>Resolved purchase-session rate</span></div>
+    </div>
+    <p class="ec-caption">Study period: November 1, 2020 – January 31, 2021. Monetary figures are recorded USD values, not adjusted for inflation.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-dashboard">
+    <p class="ec-eyebrow">Decision support</p>
+    <h2 id="ec-dashboard">A four-page analytical dashboard</h2>
+    <p class="ec-section-intro">I organized the analysis into an executive overview, conversion funnel, product and traffic performance, and data-quality review. Each page distinguishes recorded metrics from conclusions the data cannot support.</p>
+    <!-- Optional publication step: Replace this placeholder with an actual dashboard screenshot.
+         Example: <img class="ec-dashboard-shot" src="../images/ecommerce-dashboard-overview.png" alt="Looker Studio ecommerce executive dashboard">.
+         Add the real Looker Studio report URL as an external link only after checking public viewer access. -->
+    <div class="ec-dashboard-placeholder" role="note" aria-label="Dashboard link pending publication">
+      <strong>Interactive Looker Studio dashboard</strong>
+      <p>The validated report includes four pages: Executive Overview · Conversion Funnel · Product &amp; Traffic Performance · Data Quality &amp; Measurement Reliability.</p>
+      <p><small>Dashboard screenshot and public link will be added after publication and access verification.</small></p>
+    </div>
+    <p class="ec-caption">The public dashboard URL is intentionally not invented or linked here.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-findings">
+    <p class="ec-eyebrow">Key findings</p>
+    <h2 id="ec-findings">Three findings that shape the business recommendations</h2>
+    <div class="ec-grid">
+      <article class="ec-finding">
+        <div class="ec-num">47.68%</div>
+        <h3>Apparel dominates recorded item revenue</h3>
+        <p>Apparel generated <strong>$160,774</strong> from 371 purchased product IDs. Revenue concentration makes it a strong candidate for deeper assortment-level investigation, but revenue alone is not profitability.</p>
+      </article>
+      <article class="ec-finding">
+        <div class="ec-num">2,046</div>
+        <h3>Purchasing sessions lack complete recorded paths</h3>
+        <p>Of 4,848 sessions with a purchase event, only 2,802 contain all five funnel stages in chronological order. Missing cart tracking on 18 dates contributes to this gap.</p>
+      </article>
+      <article class="ec-finding">
+        <div class="ec-num">89.42%</div>
+        <h3>Late-January purchase identifiers deteriorate</h3>
+        <p>During January 29–31, 93 of 104 raw purchase events lacked a transaction-ID parameter. This makes the recorded revenue decline unsafe to interpret as an equivalent demand decline.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-funnel">
+    <p class="ec-eyebrow">Conversion analysis</p>
+    <h2 id="ec-funnel">A recorded funnel is not the same as total purchases</h2>
+    <p class="ec-section-intro">The sequential funnel requires each recorded stage to occur at or after the previous stage within the same session. This stricter definition exposes missing or out-of-order events rather than proving customers abandoned an actual step.</p>
+    <div class="ec-table-wrap"><table class="ec-data">
+      <thead><tr><th scope="col">Chronological stage</th><th scope="col">Sessions</th><th scope="col">Progression from previous stage</th></tr></thead>
+      <tbody>
+        <tr><td>Session start</td><td>354,857</td><td>—</td></tr>
+        <tr><td>View item</td><td>75,264</td><td>21.21%</td></tr>
+        <tr><td>Add to cart</td><td>14,892</td><td>19.79%</td></tr>
+        <tr><td>Begin checkout</td><td>5,325</td><td>35.76%</td></tr>
+        <tr><td>Purchase</td><td>2,802</td><td>52.62%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="ec-callout"><strong>Interpretation:</strong> 2,802 is the count of complete recorded five-stage journeys, not the full count of purchasing sessions. Known add-to-cart tracking gaps affect 61,771 sessions touching 18 November dates.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-products">
+    <p class="ec-eyebrow">Revenue and products</p>
+    <h2 id="ec-products">Where recorded product revenue is concentrated</h2>
+    <p class="ec-section-intro">The purchased-item mart contains 808 product IDs and $337,190 of item revenue. The following categories lead the recorded revenue ranking.</p>
+    <div class="ec-table-wrap"><table class="ec-data">
+      <thead><tr><th scope="col">Assigned category</th><th scope="col">Recorded item revenue</th><th scope="col">Share</th><th scope="col">Purchased product IDs</th></tr></thead>
+      <tbody>
+        <tr><td>Apparel</td><td>$160,774</td><td>47.68%</td><td>371</td></tr>
+        <tr><td>New</td><td>$25,023</td><td>7.42%</td><td>44</td></tr>
+        <tr><td>Bags</td><td>$22,383</td><td>6.64%</td><td>23</td></tr>
+        <tr><td>Campus Collection</td><td>$19,189</td><td>5.69%</td><td>114</td></tr>
+        <tr><td>Accessories</td><td>$17,124</td><td>5.08%</td><td>41</td></tr>
+      </tbody>
+    </table></div>
+    <p class="ec-caption">Categories are deterministic assignments from observed purchase data, not verified canonical catalog classifications. Product IDs are not reliably comparable across browsing, cart and purchase events, so SKU-level funnel conversion is not claimed.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-quality">
+    <p class="ec-eyebrow">Measurement reliability</p>
+    <h2 id="ec-quality">Why a revenue decline needs a quality check first</h2>
+    <p class="ec-section-intro">Resolved transaction revenue was $157,575 in December and $56,410 in January. The decline is visible in the reconciled dataset, but missing transaction IDs increased during January, so the observed change cannot be assumed to represent the full change in actual purchasing activity.</p>
+    <div class="ec-table-wrap"><table class="ec-data">
+      <thead><tr><th scope="col">January period</th><th scope="col">Raw purchase events</th><th scope="col">Missing transaction-ID parameter</th><th scope="col">Missing rate</th></tr></thead>
+      <tbody>
+        <tr><td>Jan 1–7</td><td>145</td><td>6</td><td>4.14%</td></tr>
+        <tr><td>Jan 8–14</td><td>233</td><td>14</td><td>6.01%</td></tr>
+        <tr><td>Jan 15–21</td><td>306</td><td>29</td><td>9.48%</td></tr>
+        <tr><td>Jan 22–28</td><td>416</td><td>158</td><td>37.98%</td></tr>
+        <tr><td>Jan 29–31</td><td>104</td><td>93</td><td>89.42%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="ec-section-intro">Other identified limitations include 33.19% of sessions with obfuscated source/medium attribution, potential self-referrals in 8.01% of sessions, five product IDs with multiple observed categories, and $1,011 in gross absolute transaction-to-item revenue differences across sessions.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-method">
+    <p class="ec-eyebrow">How I worked</p>
+    <h2 id="ec-method">From raw event data to reproducible business evidence</h2>
+    <div class="ec-steps">
+      <article class="ec-step"><h3>Inspect &amp; validate</h3><p>Profiled event schemas, session identifiers, purchase IDs, item fields and the consistency of recorded events.</p></article>
+      <article class="ec-step"><h3>Model with SQL</h3><p>Created staging, intermediate and analytical marts for sessions, chronological funnel paths, resolved transactions, product performance and daily quality measures.</p></article>
+      <article class="ec-step"><h3>Explain &amp; visualize</h3><p>Reconciled metrics to source totals and built a four-page Looker Studio report that preserves known limitations.</p></article>
+    </div>
+    <p class="ec-caption">Dataset: <a href="https://developers.google.com/analytics/bigquery/web-ecommerce-demo-dataset" target="_blank" rel="noopener noreferrer">Google Analytics BigQuery ecommerce sample dataset</a>. Analysis performed with BigQuery SQL and Looker Studio.</p>
+  </section>
+
+  <section class="project-section" aria-labelledby="ec-actions">
+    <p class="ec-eyebrow">Recommendations</p>
+    <h2 id="ec-actions">What I would prioritize next</h2>
+    <ol class="ec-list">
+      <li><strong>Fix purchase identifiers first.</strong> Investigate the late-January transaction-ID parameter loss and restore reliable transaction reconciliation before evaluating the revenue trend.</li>
+      <li><strong>Improve funnel instrumentation.</strong> Audit missing add-to-cart events and verify chronological event capture before using stage drop-off to prioritize optimization experiments.</li>
+      <li><strong>Deepen product analysis.</strong> Examine leading Apparel and Bags products alongside margin, inventory and verified catalog attributes before assortment decisions.</li>
+      <li><strong>Strengthen source attribution.</strong> Review source assignment, obfuscated labels and self-referrals before reallocating acquisition spend.</li>
+    </ol>
+    <div class="ec-panel ec-takeaway">
+      <h3>What this project demonstrates</h3>
+      <p>End-to-end SQL analytics, session and transaction modeling, data-quality controls, dashboard design, and business communication under imperfect measurement. The case study separates observed associations from causal or commercial claims that the data cannot establish.</p>
+    </div>
+  </section>
+
+  <footer class="project-footer">
+    <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
+  </footer>
+</main>
+</body>
+</html>
