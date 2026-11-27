@@ -1297,15 +1297,12 @@ body {
 /* Consistent image frame for every project */
 
 .project-card-media {
+    display: block;
+
     width: 100%;
     height: auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
+    overflow: visible;
     background: transparent;
 
     border-radius: 8px;
@@ -1320,10 +1317,12 @@ body {
     display: block;
 
     width: 100%;
+    max-width: 100%;
+
     height: auto;
+    max-height: none;
 
     object-fit: contain;
-    object-position: center;
 
     border-radius: 8px;
 }
@@ -1589,7 +1588,15 @@ body {
 .reference-home .project-card-content h3 {color:#111827;font-size:clamp(17px,1.65vw,24px);line-height:1.28;letter-spacing:-.025em;font-weight:740;}
 .reference-home .project-card-content>p:not(.project-card-tech) {font-size:15px;line-height:1.52;color:#1d2939;min-height:68px;}
 .reference-home .project-card-content .project-card-tech {background:#f1f5fb;border-radius:9px;padding:9px 12px;font-size:12px!important;color:#243245!important;line-height:1.45!important;}
-.reference-home .project-card-media {aspect-ratio:1.88/1;border:1px solid #e0e8f2;border-radius:9px;background:#f3f7fc;margin:0;}
+.reference-home .project-card-media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    border: 1px solid #e0e8f2;
+    border-radius: 9px;
+    background: transparent;
+    margin: 0;
+}
 .reference-home .ecommerce-card-media {padding:0;background:#f1f5fb;}
 .reference-home .ecommerce-card-preview {border:0;border-radius:6px;background:#fff;padding:13px 15px;}
 .reference-home .ecommerce-preview-heading {background:#2369aa;color:#fff;margin:-13px -15px 8px;padding:9px 15px;font-size:13px;letter-spacing:.02em;}
