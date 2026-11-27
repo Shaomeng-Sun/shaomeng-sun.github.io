@@ -679,73 +679,172 @@
         <section class="project-section">
 
             <p class="tc-eyebrow">Supporting analytical evidence</p>
-            <h2>Machine learning adds a classification perspective</h2>
+            <h2>Customer tenure, contract type and internet technology stand out as churn signals</h2>
 
             <p class="tc-intro">
-                I also evaluated whether customer characteristics could classify
-                the churn outcome already recorded in the dataset. Logistic
-                Regression was selected because it achieved the highest mean
-                Average Precision in the five-fold cross-validation comparison.
+                The classification model complements the segment analysis by considering
+                customer characteristics together. SHAP reveals which features contribute
+                most to the model's scores and whether they push those scores towards
+                or away from the recorded churn outcome.
             </p>
+
+            <div class="results-grid">
+                <article class="result-card tc-finding-card">
+                    <span class="result-label">Customer lifecycle</span>
+                    <h3>Short tenure is the strongest individual model signal</h3>
+                    <p>
+                        Tenure has the highest mean absolute SHAP value (0.74)
+                        among individually displayed features. Shorter tenure pushes
+                        churn scores higher, while longer tenure pushes them lower,
+                        reinforcing the early-lifecycle finding from the SQL analysis.
+                    </p>
+                </article>
+
+                <article class="result-card tc-finding-card">
+                    <span class="result-label">Contract structure</span>
+                    <h3>Contract length matters to classification</h3>
+                    <p>
+                        Month-to-month contracts contribute towards higher churn scores
+                        (mean absolute SHAP: 0.33), while two-year contracts contribute
+                        towards lower scores (0.25). Electronic-check payment also
+                        pushes scores higher, supporting further investigation of
+                        contract and payment patterns.
+                    </p>
+                </article>
+
+                <article class="result-card tc-finding-card">
+                    <span class="result-label">Service experience</span>
+                    <h3>Internet technology provides additional signals</h3>
+                    <p>
+                        Fiber Optic contributes towards higher churn scores (mean
+                        absolute SHAP: 0.29), while DSL contributes towards lower scores
+                        (0.22). Lack of technical support also pushes scores higher,
+                        although its individual contribution is smaller (0.09).
+                    </p>
+                </article>
+            </div>
+
+            <h3 style="margin-top: 30px;">Which characteristics matter, and in which direction?</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 18px; align-items: start;">
+                <figure class="tc-dashboard-figure" style="min-width: 0; margin-top: 0;">
+                    <a href="../images/shap_feature_importance.png" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="../images/shap_feature_importance.png"
+                            alt="Mean absolute SHAP importance: tenure 0.74, month-to-month contract 0.33, Fiber Optic 0.29, two-year contract and monthly charges 0.25 each."
+                            loading="lazy"
+                        >
+                    </a>
+                    <figcaption class="tc-caption">
+                        <strong>Figure 1 · Feature importance.</strong> Larger mean absolute
+                        SHAP values indicate greater influence on model output, regardless
+                        of direction. Click to enlarge.
+                    </figcaption>
+                </figure>
+
+                <figure class="tc-dashboard-figure" style="min-width: 0; margin-top: 0;">
+                    <a href="../images/shap_summary.png" target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="../images/shap_summary.png"
+                            alt="SHAP summary showing shorter tenure, month-to-month contracts, Fiber Optic and electronic check contributing towards higher churn scores; longer tenure, two-year contracts and DSL towards lower scores."
+                            loading="lazy"
+                        >
+                    </a>
+                    <figcaption class="tc-caption">
+                        <strong>Figure 2 · Direction of contributions.</strong> Each dot
+                        represents a customer contribution; positive values increase
+                        model log-odds of churn, negative values decrease them. Click to enlarge.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <p class="tc-note">
+                SHAP values are expressed in model log-odds, not percentage-point
+                changes in churn probability. For one-hot encoded categories, a high
+                feature value means the category is present. The grouped row of 26
+                other features is not a single customer characteristic.
+            </p>
+
+            <div class="highlight-box" style="margin-top: 24px;">
+                <h3>Business implication: investigate lifecycle and contract patterns before targeting price alone</h3>
+                <p>
+                    The model reinforces several segment-level findings, particularly
+                    early tenure, month-to-month contracts and Fiber Optic service.
+                    An additional insight is that higher monthly charges push the
+                    fitted model's scores lower, rather than higher, while other
+                    characteristics are considered. This suggests investigating pricing
+                    alongside contract and service mix rather than assuming that higher
+                    bills alone explain churn. These are hypotheses for further research,
+                    not demonstrated causal effects or evidence that changing a feature
+                    will reduce churn.
+                </p>
+            </div>
+
+            <h3 style="margin-top: 30px;">How reliably does the model distinguish churn outcomes?</h3>
 
             <div class="tc-model-grid">
                 <div class="tc-model-stat">
                     <strong>0.8324</strong>
-                    <span>Test ROC-AUC</span>
-                </div>
-                <div class="tc-model-stat">
-                    <strong>0.6398</strong>
-                    <span>Test Average Precision</span>
+                    <span>Test ROC-AUC · ability to rank churned above non-churned customers</span>
                 </div>
                 <div class="tc-model-stat">
                     <strong>75.44%</strong>
-                    <span>Test recall</span>
+                    <span>Test recall · recorded churn cases correctly flagged</span>
+                </div>
+                <div class="tc-model-stat">
+                    <strong>52.74%</strong>
+                    <span>Test precision · flagged customers with recorded churn</span>
                 </div>
             </div>
 
-            <table class="tc-model-table">
-                <tbody>
-                    <tr>
-                        <th scope="row">Selected model</th>
-                        <td>Logistic Regression</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Mean five-fold CV Average Precision</th>
-                        <td>0.6536</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Test precision</th>
-                        <td>52.74%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Test F1-score</th>
-                        <td>62.08%</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Test Brier score</th>
-                        <td>0.1737</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Validation-selected threshold</th>
-                        <td>0.54</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p class="tc-note">
-                The data was split into training (70%), validation (15%) and test
-                (15%) partitions. Candidate models were compared using five-fold
-                stratified cross-validation on the training partition. The
-                threshold was selected using validation data; the test set of
-                1,057 records was reserved for final evaluation.
+            <p>
+                At the selected threshold, the model identifies roughly three out
+                of four customers with recorded churn, but only about half of flagged
+                customers actually have a recorded churn outcome. This illustrates
+                the trade-off between covering more churn cases and targeting accurately.
+                A future retention programme would need to balance that trade-off against
+                intervention costs and benefits.
             </p>
 
-            <p class="tc-note">
-                This is retrospective classification of the recorded churn label,
-                not a validated prediction of whether a customer will churn in a
-                future period such as the next 30 days. The model has not been
-                tested on later-period customer data or used to evaluate the
-                impact of retention interventions.
+            <h3 style="margin-top: 24px;">My analytical contribution</h3>
+            <p>
+                I developed and compared classification models using scikit-learn,
+                selected Logistic Regression based on mean Average Precision in
+                five-fold stratified cross-validation, tuned the classification
+                threshold on validation data, and evaluated performance on 1,057
+                held-out records. I used SHAP to interpret global feature importance
+                and individual model contributions.
+            </p>
+
+            <details style="margin-top: 18px;">
+                <summary style="cursor: pointer; font-weight: 600;">Model evaluation &amp; methodology details</summary>
+                <table class="tc-model-table">
+                    <tbody>
+                        <tr><th scope="row">Selected model</th><td>Logistic Regression</td></tr>
+                        <tr><th scope="row">Mean five-fold CV Average Precision</th><td>0.6536</td></tr>
+                        <tr><th scope="row">Test Average Precision</th><td>0.6398</td></tr>
+                        <tr><th scope="row">Test ROC-AUC</th><td>0.8324</td></tr>
+                        <tr><th scope="row">Test recall</th><td>75.44%</td></tr>
+                        <tr><th scope="row">Test precision</th><td>52.74%</td></tr>
+                        <tr><th scope="row">Test F1-score</th><td>62.08%</td></tr>
+                        <tr><th scope="row">Test Brier score</th><td>0.1737</td></tr>
+                        <tr><th scope="row">Validation-selected threshold</th><td>0.54</td></tr>
+                    </tbody>
+                </table>
+                <p class="tc-note">
+                    The data was split into training (70%), validation (15%) and test
+                    (15%) partitions. Model comparison used five-fold stratified
+                    cross-validation on training data only; threshold selection used
+                    validation data, leaving the test partition for final evaluation.
+                </p>
+            </details>
+
+            <p class="tc-caveat">
+                <strong>Interpretation boundary:</strong> This is retrospective
+                classification of a recorded churn label from a customer snapshot,
+                not validated future churn prediction. SHAP explains the fitted model,
+                not causal effects. Prospective validation on dated customer data and
+                controlled retention experiments are needed before operational targeting.
             </p>
 
         </section>
