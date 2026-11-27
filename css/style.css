@@ -929,7 +929,7 @@ body {
 }
 
 .education-item .date {
-    margin: 0;
+    margin: 0 0 16px;
 
     color: #64748b;
 
